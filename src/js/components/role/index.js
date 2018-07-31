@@ -52,7 +52,7 @@ const Gradient = styled.div`
 function Role({ onClick, availableRoles, selectedRole }) {
     const options =  availableRoles.map((role, index) => {
         return (
-            <Option image={role} active={role === selectedRole} key={index} onClick={() => onClick(role)} role={role}>
+            <Option image={role.toLowerCase()} active={role === selectedRole} key={index} onClick={() => onClick(role)} role={role}>
                 <Gradient />
                 <OptionTitle>
                     {role}
