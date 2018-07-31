@@ -30,7 +30,7 @@ const store = createStore(
 )
 
 // main app
-import App from './js/components/App';
+import App from './js/components/app';
 
 ReactDOM.render(
     <Provider store={store}>
