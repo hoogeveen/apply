@@ -27,4 +27,4 @@
 # Feel free to add new variables to customise your setup.
 set :branch, 'develop'
 set :deploy_to, "/var/www/inexcels.is"
-set :application, 'inexcelsis-producction'
+set :application, 'inexcelsis-production'
