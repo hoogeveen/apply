@@ -15,7 +15,7 @@ const Option = styled.div`
     width: 320px;
     height: 240px;
     display: inline-block;
-    background-image: url('/static/thumbnails/specializations/${props => props.image}@2x.png');
+    background-image: url('/dist/assets/images/thumbnails/specializations/${props => props.image}@2x.png');
     background-size: cover;
 
     opacity: ${props => props.active ? 1 : 0.5};
