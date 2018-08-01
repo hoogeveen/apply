@@ -1,12 +1,14 @@
 const path = require('path'),
     webpack = require('webpack'),
     CopyWebpackPlugin = require('copy-webpack-plugin')
+require('babel-polyfill')
 
 module.exports = {
     context: path.resolve(__dirname, './src'),
-    entry: {
-        app: './client/index.js',
-    },
+    entry: [
+        'babel-polyfill',
+        './client/index.js',
+    ],
     output: {
         filename: '[name].bundle.js',
         path: path.resolve(__dirname, './dist/assets'),
@@ -19,7 +21,6 @@ module.exports = {
                 exclude: [/node_modules/],
                 use: [{
                     loader: 'babel-loader',
-                    options: { presets: ['es2015', 'react'], plugins: ['transform-object-rest-spread', 'async-to-promises', 'styled-components'] }
                 }],
             }
             //loaders for other file types can go here

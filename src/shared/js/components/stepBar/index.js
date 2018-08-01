@@ -10,8 +10,8 @@ const StepBarContainer = styled.div`
 `
 
 const StepContainer = styled.div.attrs({
-    borderStatus: props => props.status === 'active' ? '#DDA024' : props.status === 'disabled' ? '#262626' : '#494949',
-    stepStatus: props => props.status === 'active' ? '#494949' : props.status === 'disabled' ? '#262626' : '#494949',
+    borderstatus: props => props.status === 'active' ? '#DDA024' : props.status === 'disabled' ? '#262626' : '#494949',
+    stepstatus: props => props.status === 'active' ? '#494949' : props.status === 'disabled' ? '#262626' : '#494949',
     background: props => props.status === 'active' ? '#DDA024' : 'transparent'
 })`
 
@@ -22,7 +22,7 @@ const StepContainer = styled.div.attrs({
     width: 40px;
     height: 40px;
     background-color: ${(props) => props.background };
-    border: 3px solid ${(props) => props.borderStatus };
+    border: 3px solid ${(props) => props.borderstatus };
     &:hover {
         cursor: ${(props) => props.status !== 'disabled' ? 'pointer;' : 'not-allowed'};
         border-color: ${(props) => props.status !== 'disabled' ? '#DDA024;' : ''}
@@ -31,7 +31,7 @@ const StepContainer = styled.div.attrs({
         }
     }
     & ${Step}{
-        color: ${(props) => props.stepStatus};
+        color: ${(props) => props.stepstatus};
     }
 `
 

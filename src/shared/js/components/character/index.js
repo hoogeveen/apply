@@ -68,6 +68,7 @@ const Gradient = styled.div`
 `
 
 function Characters({ characters, selectedCharacter, onClick }) {
+    console.log(characters)
     const renderCharacters = characters.map((character, index) => {
         return (
             <Character image={character.thumbnail.replace('avatar', 'profilemain')} active={`${selectedCharacter.name}${selectedCharacter.realm}` === `${character.name}${character.realm}`} onClick={() => onClick(character)} key={index}>
@@ -96,6 +97,7 @@ function Characters({ characters, selectedCharacter, onClick }) {
 
 const mapStateToProps = state => {
     const classesForRole = getAvailableClassesForRole(state.apply.answers.role)
+    console.log(classesForRole)
     return {
         characters: getCharactersForClasses(classesForRole, state.characters),
         selectedCharacter: state.apply.answers.character || {}

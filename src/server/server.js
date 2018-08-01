@@ -121,9 +121,17 @@ app.get('*', async (req, res) => {
 
 const port = process.env.PORT || 9000;
 
-app.listen(port, function () {
-	console.log('app running on localhost:' + port);
-});
+const httpsOptions = {
+  key: fs.readFileSync('./key.pem'),
+  cert: fs.readFileSync('./cert.pem')
+}
+https.createServer(httpsOptions, app).listen(port, () => {
+  console.log('server running at ' + port)
+})
+
+// app.listen(port, function () {
+// 	console.log('app running on localhost:' + port);
+// });
 
 
 function renderFullPage(html, preloadedState, helmet, styles) {
@@ -144,7 +152,7 @@ function renderFullPage(html, preloadedState, helmet, styles) {
           // http://redux.js.org/docs/recipes/ServerRendering.html#security-considerations
           window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')}
         </script>
-        <script src="/dist/assets/app.bundle.js"></script>
+        <script src="/dist/assets/main.bundle.js"></script>
       </body>
     </html>
     `

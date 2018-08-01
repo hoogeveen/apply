@@ -3072,6 +3072,7 @@ function getClassName(charClass) {
 }
 
 function getRaceName(race) {
+    console.log(Object.keys(_constants.RACES));
     return Object.keys(_constants.RACES).find(function (key) {
         return _constants.RACES[key] === race;
     }).toLowerCase().replace('_', ' ');
@@ -6921,6 +6922,7 @@ function Characters(_ref4) {
         selectedCharacter = _ref4.selectedCharacter,
         _onClick = _ref4.onClick;
 
+    console.log(characters);
     var renderCharacters = characters.map(function (character, index) {
         return _react2.default.createElement(
             Character,
@@ -6975,6 +6977,7 @@ function Characters(_ref4) {
 
 var mapStateToProps = function mapStateToProps(state) {
     var classesForRole = (0, _helpers.getAvailableClassesForRole)(state.apply.answers.role);
+    console.log(classesForRole);
     return {
         characters: (0, _helpers.getCharactersForClasses)(classesForRole, state.characters),
         selectedCharacter: state.apply.answers.character || {}
@@ -7292,6 +7295,8 @@ function Specialization(_ref3) {
         role = _ref3.role,
         _onClick = _ref3.onClick;
 
+    console.log(role);
+    console.log(charClass);
     var specializations = (0, _helpers.getSpecializationsForRole)(charClass, role);
     if (specializations.length === 1) {
         _onClick(specializations[0]);
@@ -7333,6 +7338,7 @@ function Specialization(_ref3) {
 }
 
 var mapStateToProps = function mapStateToProps(state) {
+    console.log(state);
     return {
         role: state.apply.answers.role,
         charClass: state.apply.answers.character['class']

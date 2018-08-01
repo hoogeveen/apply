@@ -47,6 +47,8 @@ const Gradient = styled.div`
 `
 
 function Specialization({charClass, role, onClick}) {
+    console.log(role)
+    console.log(charClass)
     const specializations = getSpecializationsForRole(charClass, role)
     if (specializations.length === 1) {
         onClick(specializations[0])
@@ -74,6 +76,7 @@ function Specialization({charClass, role, onClick}) {
 }
 
 const mapStateToProps = state => {
+    console.log(state)
     return {
         role: state.apply.answers.role,
         charClass: state.apply.answers.character['class']

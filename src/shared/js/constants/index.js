@@ -37,8 +37,9 @@ export const RACES = {
     GNOME: 7,
     GOBLIN: 9,
     PANDAREN: 25,
-    PANDAREN: 26
-
+    PANDAREN: 26,
+    BLOOD_ELF: 10,
+    DRAENEI: 11
 }
 
 export const ROLES = {
@@ -47,4 +48,3 @@ export const ROLES = {
     MELEE: 'MELEE',
     RANGED: 'RANGED'
 }
-

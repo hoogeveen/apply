@@ -760,12 +760,21 @@ app.get('*', async function (req, res) {
 
 var port = process.env.PORT || 9000;
 
-app.listen(port, function () {
-  console.log('app running on localhost:' + port);
+var httpsOptions = {
+  key: _fs2.default.readFileSync('./key.pem'),
+  cert: _fs2.default.readFileSync('./cert.pem')
+};
+_https2.default.createServer(httpsOptions, app).listen(port, function () {
+  console.log('server running at ' + port);
 });
 
+// app.listen(port, function () {
+// 	console.log('app running on localhost:' + port);
+// });
+
+
 function renderFullPage(html, preloadedState, helmet, styles) {
-  return '\n    <!doctype html>\n    <html>\n      <head>\n        <link rel="icon" href="/dist/favicon.ico" type="image/ico" />\n        ' + helmet.title.toString() + '\n        ' + helmet.meta.toString() + '\n\t\t\t\t' + helmet.link.toString() + '\n\t\t\t\t' + styles + '\n      </head>\n      <body>\n        <div id="root">' + html + '</div>\n        <script>\n          // WARNING: See the following for security issues around embedding JSON in HTML:\n          // http://redux.js.org/docs/recipes/ServerRendering.html#security-considerations\n          window.__PRELOADED_STATE__ = ' + JSON.stringify(preloadedState).replace(/</g, '\\u003c') + '\n        </script>\n        <script src="/dist/assets/app.bundle.js"></script>\n      </body>\n    </html>\n    ';
+  return '\n    <!doctype html>\n    <html>\n      <head>\n        <link rel="icon" href="/dist/favicon.ico" type="image/ico" />\n        ' + helmet.title.toString() + '\n        ' + helmet.meta.toString() + '\n\t\t\t\t' + helmet.link.toString() + '\n\t\t\t\t' + styles + '\n      </head>\n      <body>\n        <div id="root">' + html + '</div>\n        <script>\n          // WARNING: See the following for security issues around embedding JSON in HTML:\n          // http://redux.js.org/docs/recipes/ServerRendering.html#security-considerations\n          window.__PRELOADED_STATE__ = ' + JSON.stringify(preloadedState).replace(/</g, '\\u003c') + '\n        </script>\n        <script src="/dist/assets/main.bundle.js"></script>\n      </body>\n    </html>\n    ';
 }
 
 /***/ }),
@@ -1089,6 +1098,7 @@ function Characters(_ref4) {
         selectedCharacter = _ref4.selectedCharacter,
         _onClick = _ref4.onClick;
 
+    console.log(characters);
     var renderCharacters = characters.map(function (character, index) {
         return _react2.default.createElement(
             Character,
@@ -1143,6 +1153,7 @@ function Characters(_ref4) {
 
 var mapStateToProps = function mapStateToProps(state) {
     var classesForRole = (0, _helpers.getAvailableClassesForRole)(state.apply.answers.role);
+    console.log(classesForRole);
     return {
         characters: (0, _helpers.getCharactersForClasses)(classesForRole, state.characters),
         selectedCharacter: state.apply.answers.character || {}
@@ -1459,6 +1470,8 @@ function Specialization(_ref3) {
         role = _ref3.role,
         _onClick = _ref3.onClick;
 
+    console.log(role);
+    console.log(charClass);
     var specializations = (0, _helpers.getSpecializationsForRole)(charClass, role);
     if (specializations.length === 1) {
         _onClick(specializations[0]);
@@ -1500,6 +1513,7 @@ function Specialization(_ref3) {
 }
 
 var mapStateToProps = function mapStateToProps(state) {
+    console.log(state);
     return {
         role: state.apply.answers.role,
         charClass: state.apply.answers.character['class']
@@ -1550,10 +1564,10 @@ function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defi
 var StepBarContainer = _styledComponents2.default.div(_templateObject);
 
 var StepContainer = _styledComponents2.default.div.attrs({
-    borderStatus: function borderStatus(props) {
+    borderstatus: function borderstatus(props) {
         return props.status === 'active' ? '#DDA024' : props.status === 'disabled' ? '#262626' : '#494949';
     },
-    stepStatus: function stepStatus(props) {
+    stepstatus: function stepstatus(props) {
         return props.status === 'active' ? '#494949' : props.status === 'disabled' ? '#262626' : '#494949';
     },
     background: function background(props) {
@@ -1562,7 +1576,7 @@ var StepContainer = _styledComponents2.default.div.attrs({
 })(_templateObject2, function (props) {
     return props.background;
 }, function (props) {
-    return props.borderStatus;
+    return props.borderstatus;
 }, function (props) {
     return props.status !== 'disabled' ? 'pointer;' : 'not-allowed';
 }, function (props) {
@@ -1570,7 +1584,7 @@ var StepContainer = _styledComponents2.default.div.attrs({
 }, Step, function (props) {
     return props.status === 'active' ? '' : '#DDA024;';
 }, Step, function (props) {
-    return props.stepStatus;
+    return props.stepstatus;
 });
 
 var Step = _styledComponents2.default.span(_templateObject3, function (_ref) {
@@ -1633,6 +1647,8 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+var _RACES;
+
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var CLASSES = exports.CLASSES = {
@@ -1665,7 +1681,7 @@ var COLORS = exports.COLORS = {
     12: '#A330C9'
 };
 
-var RACES = exports.RACES = _defineProperty({
+var RACES = exports.RACES = (_RACES = {
     HUMAN: 1,
     DWARF: 2,
     NIGHT_ELF: 4,
@@ -1673,7 +1689,7 @@ var RACES = exports.RACES = _defineProperty({
     GNOME: 7,
     GOBLIN: 9,
     PANDAREN: 25
-}, 'PANDAREN', 26);
+}, _defineProperty(_RACES, 'PANDAREN', 26), _defineProperty(_RACES, 'BLOOD_ELF', 10), _defineProperty(_RACES, 'DRAENEI', 11), _RACES);
 
 var ROLES = exports.ROLES = {
     TANK: 'TANK',
