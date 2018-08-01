@@ -5,6 +5,9 @@ import helmet from 'react-helmet';
 import App from '../shared';
 import passport from 'passport'
 import session from 'express-session'
+import https from 'https'
+import fs from 'fs'
+import fetch from 'node-fetch';
 
 import { ServerStyleSheet } from 'styled-components'; // <-- importing ServerStyleSheet
 const app = express();
@@ -19,8 +22,10 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 var BnetStrategy = require('passport-bnet').Strategy;
-var BNET_ID = 'gy436v5phwuxt5quu8x7n99avgsebghd'
-var BNET_SECRET = 'DV983WRzn45DWyTz2zkfTCU2Xv7uKhUh'
+
+var BNET_ID = process.env.BNET_ID
+var BNET_SECRET = process.env.BNET_SECRET
+var BNET_CALLBACK = process.env.BNET_CALLBACK
 
 passport.serializeUser(function(user, done) {
   done(null, user);
@@ -34,11 +39,22 @@ passport.deserializeUser(function(user, done) {
 passport.use(new BnetStrategy({
     clientID: BNET_ID,
     clientSecret: BNET_SECRET,
-    callbackURL: "https://inexcels.is/auth/bnet/callback",
-    region: "eu"
+    callbackURL: BNET_CALLBACK,
+    region: "eu",
+    scope: "wow.profile",
 }, function(accessToken, refreshToken, profile, done) {
-    console.log(profile)
-    return done(null, profile);
+    fetch(`https://eu.api.battle.net/wow/user/characters?access_token=${profile.token}`,{
+      method: 'get',
+      headers: {
+        'content-type': 'application/json'
+      }
+    }).then(res => res.json()).then(characters => {
+      console.log(characters)
+      return done(null, characters);
+    }).catch(err => {
+      console.log(err)
+    })
+
 }));
 
 app.get('/auth/bnet',
@@ -53,21 +69,45 @@ app.get('/auth/bnet/callback',
 
 
 app.get('*', async (req, res) => {
-    console.log(req.user)
+    if (!req.user) {
+      return res.redirect('/auth/bnet')
+    }
 		const sheet = new ServerStyleSheet();
 
 		const html = ReactDOM.renderToString(sheet.collectStyles(<App />))
 		const styles = sheet.getStyleTags();
 		//render helmet data aka meta data in <head></head>
 		const helmetData = helmet.renderStatic();
-		//check context for url, if url exists then react router has ran into a redirect
-		res.send(renderFullPage(html, {}, helmetData, styles))
+    //check context for url, if url exists then react router has ran into a redirect
+    const initialData = {
+      account: {
+        battletag: 'merijn#21686',
+        email: 'mail@merijn.pt'
+      },
+      characters: req.user.characters.filter(char => char.level === 110),
+      apply: {
+        maxStep: 0,
+        step: 0,
+        answers: {
+            role: null,
+            character: null
+        }
+      }
+    }
+		res.send(renderFullPage(html, initialData, helmetData, styles))
 });
 
-const port = process.env.PORT || 9000;
-app.listen(port, function () {
-	console.log('app running on localhost:' + port);
-});
+// const port = process.env.PORT || 9000;
+// app.listen(port, function () {
+// 	console.log('app running on localhost:' + port);
+// });
+
+var sslOptions = {
+  key: fs.readFileSync('./key.pem'),
+  cert: fs.readFileSync('./cert.pem')
+};
+
+https.createServer(sslOptions, app).listen(8443)
 
 function renderFullPage(html, preloadedState, helmet, styles) {
 	return `
