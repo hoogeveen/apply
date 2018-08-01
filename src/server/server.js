@@ -9,6 +9,10 @@ import https from 'https'
 import fs from 'fs'
 import fetch from 'node-fetch';
 import cookieParser from 'cookie-parser'
+import { Provider } from 'react-redux';
+import thunk from '../shared/js/middleware';
+import { createStore, applyMiddleware } from 'redux';
+import reducers from '../shared/js/reducers';
 
 import { ServerStyleSheet } from 'styled-components'; // <-- importing ServerStyleSheet
 const app = express();
@@ -80,16 +84,7 @@ app.get('*', async (req, res) => {
     if (!req.user) {
       return res.redirect('/auth/bnet')
     }
-		const sheet = new ServerStyleSheet();
 
-		const html = ReactDOM.renderToString(sheet.collectStyles(
-    <Provider store={store}>
-      <App />
-    </Provider>))
-		const styles = sheet.getStyleTags();
-		//render helmet data aka meta data in <head></head>
-		const helmetData = helmet.renderStatic();
-    //check context for url, if url exists then react router has ran into a redirect
     const initialData = {
       account: {
         battletag: 'merijn#21686',
@@ -105,10 +100,27 @@ app.get('*', async (req, res) => {
         }
       }
     }
-		res.send(renderFullPage(html, initialData, helmetData, styles))
+
+    const store = createStore(reducers, initialData, applyMiddleware(thunk));
+
+		const sheet = new ServerStyleSheet();
+
+		const html = ReactDOM.renderToString(sheet.collectStyles(
+    <Provider store={store}>
+      <App />
+    </Provider>))
+
+    console.log(html)
+		const styles = sheet.getStyleTags();
+		//render helmet data aka meta data in <head></head>
+		const helmetData = helmet.renderStatic();
+    //check context for url, if url exists then react router has ran into a redirect
+
+		res.send(renderFullPage(html, store.getState(), helmetData, styles))
 });
 
 const port = process.env.PORT || 9000;
+
 app.listen(port, function () {
 	console.log('app running on localhost:' + port);
 });
@@ -130,7 +142,7 @@ function renderFullPage(html, preloadedState, helmet, styles) {
         <script>
           // WARNING: See the following for security issues around embedding JSON in HTML:
           // http://redux.js.org/docs/recipes/ServerRendering.html#security-considerations
-          window.__PRELOADED_STATE__ = ${JSON.stringify(initialData).replace(/</g, '\\u003c')}
+          window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')}
         </script>
         <script src="/dist/assets/app.bundle.js"></script>
       </body>
