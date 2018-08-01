@@ -61,12 +61,15 @@ app.get('/auth/bnet',
     passport.authenticate('bnet'));
 
 app.get('/auth/bnet/callback',
-  passport.authenticate('bnet', { failureRedirect: '/' }),
+  passport.authenticate('bnet', { failureRedirect: '/error' }),
   function(req, res){
     res.redirect('/');
   }
 );
 
+app.get('/error', function(req, res) {
+  return res.send('error')
+})
 
 app.get('*', async (req, res) => {
     if (!req.user) {

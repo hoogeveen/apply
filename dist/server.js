@@ -660,8 +660,12 @@ _passport2.default.use(new BnetStrategy({
 
 app.get('/auth/bnet', _passport2.default.authenticate('bnet'));
 
-app.get('/auth/bnet/callback', _passport2.default.authenticate('bnet', { failureRedirect: '/' }), function (req, res) {
+app.get('/auth/bnet/callback', _passport2.default.authenticate('bnet', { failureRedirect: '/error' }), function (req, res) {
   res.redirect('/');
+});
+
+app.get('/error', function (req, res) {
+  return res.send('error');
 });
 
 app.get('*', async function (req, res) {
