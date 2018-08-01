@@ -4,11 +4,19 @@ import ReactDOM from 'react-dom/server';
 import helmet from 'react-helmet';
 import App from '../shared';
 import passport from 'passport'
+import session from 'express-session'
+
 import { ServerStyleSheet } from 'styled-components'; // <-- importing ServerStyleSheet
 const app = express();
 
 app.use('/dist', express.static('./dist'));
 
+app.use(session({
+  secret: 'keyboard cat',
+  cookie: { secure: true }
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 
 var BnetStrategy = require('passport-bnet').Strategy;
 var BNET_ID = 'gy436v5phwuxt5quu8x7n99avgsebghd'

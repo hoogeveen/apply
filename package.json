@@ -17,6 +17,7 @@
     "axios": "^0.16.2",
     "babel-plugin-styled-components": "^1.5.1",
     "express": "^4.15.2",
+    "express-session": "^1.15.6",
     "passport": "^0.4.0",
     "passport-bnet": "^1.2.2",
     "react": "^16.0.0",

@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 17);
+/******/ 	return __webpack_require__(__webpack_require__.s = 18);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -221,7 +221,7 @@ exports.getClassName = getClassName;
 exports.getRaceName = getRaceName;
 exports.getClassColor = getClassColor;
 
-var _constants = __webpack_require__(25);
+var _constants = __webpack_require__(26);
 
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
@@ -446,7 +446,7 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(37);
+var _reactDom = __webpack_require__(38);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -454,19 +454,19 @@ var _redux = __webpack_require__(10);
 
 var _reactRedux = __webpack_require__(2);
 
-var _reducers = __webpack_require__(31);
+var _reducers = __webpack_require__(32);
 
 var _reducers2 = _interopRequireDefault(_reducers);
 
-var _characters = __webpack_require__(26);
+var _characters = __webpack_require__(27);
 
 var _styledComponents = __webpack_require__(0);
 
-var _styles = __webpack_require__(33);
+var _styles = __webpack_require__(34);
 
-__webpack_require__(32);
+__webpack_require__(33);
 
-var _app = __webpack_require__(19);
+var _app = __webpack_require__(20);
 
 var _app2 = _interopRequireDefault(_app);
 
@@ -514,28 +514,34 @@ module.exports = require("express");
 /* 13 */
 /***/ (function(module, exports) {
 
-module.exports = require("passport");
+module.exports = require("express-session");
 
 /***/ }),
 /* 14 */
 /***/ (function(module, exports) {
 
-module.exports = require("passport-bnet");
+module.exports = require("passport");
 
 /***/ }),
 /* 15 */
 /***/ (function(module, exports) {
 
-module.exports = require("react-dom/server");
+module.exports = require("passport-bnet");
 
 /***/ }),
 /* 16 */
 /***/ (function(module, exports) {
 
-module.exports = require("react-helmet");
+module.exports = require("react-dom/server");
 
 /***/ }),
 /* 17 */
+/***/ (function(module, exports) {
+
+module.exports = require("react-helmet");
+
+/***/ }),
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -549,11 +555,11 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _server = __webpack_require__(15);
+var _server = __webpack_require__(16);
 
 var _server2 = _interopRequireDefault(_server);
 
-var _reactHelmet = __webpack_require__(16);
+var _reactHelmet = __webpack_require__(17);
 
 var _reactHelmet2 = _interopRequireDefault(_reactHelmet);
 
@@ -561,9 +567,13 @@ var _shared = __webpack_require__(11);
 
 var _shared2 = _interopRequireDefault(_shared);
 
-var _passport = __webpack_require__(13);
+var _passport = __webpack_require__(14);
 
 var _passport2 = _interopRequireDefault(_passport);
+
+var _expressSession = __webpack_require__(13);
+
+var _expressSession2 = _interopRequireDefault(_expressSession);
 
 var _styledComponents = __webpack_require__(0);
 
@@ -574,7 +584,14 @@ var app = (0, _express2.default)();
 
 app.use('/dist', _express2.default.static('./dist'));
 
-var BnetStrategy = __webpack_require__(14).Strategy;
+app.use((0, _expressSession2.default)({
+  secret: 'keyboard cat',
+  cookie: { secure: true }
+}));
+app.use(_passport2.default.initialize());
+app.use(_passport2.default.session());
+
+var BnetStrategy = __webpack_require__(15).Strategy;
 var BNET_ID = 'gy436v5phwuxt5quu8x7n99avgsebghd';
 var BNET_SECRET = 'DV983WRzn45DWyTz2zkfTCU2Xv7uKhUh';
 
@@ -616,7 +633,7 @@ function renderFullPage(html, preloadedState, helmet, styles) {
 }
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -649,7 +666,7 @@ var _header = __webpack_require__(7);
 
 var _header2 = _interopRequireDefault(_header);
 
-var _footer = __webpack_require__(27);
+var _footer = __webpack_require__(28);
 
 var _footer2 = _interopRequireDefault(_footer);
 
@@ -758,7 +775,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(AlternativeSpecialization);
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -782,27 +799,27 @@ var _reactRedux = __webpack_require__(2);
 
 var _helpers = __webpack_require__(6);
 
-var _role = __webpack_require__(22);
+var _role = __webpack_require__(23);
 
 var _role2 = _interopRequireDefault(_role);
 
-var _character = __webpack_require__(20);
+var _character = __webpack_require__(21);
 
 var _character2 = _interopRequireDefault(_character);
 
-var _specialization = __webpack_require__(23);
+var _specialization = __webpack_require__(24);
 
 var _specialization2 = _interopRequireDefault(_specialization);
 
-var _alternative_specialization = __webpack_require__(18);
+var _alternative_specialization = __webpack_require__(19);
 
 var _alternative_specialization2 = _interopRequireDefault(_alternative_specialization);
 
-var _overview = __webpack_require__(21);
+var _overview = __webpack_require__(22);
 
 var _overview2 = _interopRequireDefault(_overview);
 
-var _stepBar = __webpack_require__(24);
+var _stepBar = __webpack_require__(25);
 
 var _stepBar2 = _interopRequireDefault(_stepBar);
 
@@ -853,7 +870,7 @@ var mapStateToProps = function mapStateToProps(state) {
 exports.default = (0, _reactRedux.connect)(mapStateToProps)(App);
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1007,7 +1024,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Characters);
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1107,7 +1124,7 @@ var mapStateToProps = function mapStateToProps(state) {
 exports.default = (0, _reactRedux.connect)(mapStateToProps)(Overview);
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1240,7 +1257,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Role);
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1367,7 +1384,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Specialization);
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1474,7 +1491,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(StepBar);
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1534,7 +1551,7 @@ var ROLES = exports.ROLES = {
 };
 
 /***/ }),
-/* 26 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2172,7 +2189,7 @@ var characters = exports.characters = [{
 }];
 
 /***/ }),
-/* 27 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2197,7 +2214,7 @@ var Footer = _styledComponents2.default.div(_templateObject);
 exports.default = Footer;
 
 /***/ }),
-/* 28 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2219,7 +2236,7 @@ var account = function account() {
 exports.default = account;
 
 /***/ }),
-/* 29 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2260,7 +2277,7 @@ var apply = function apply() {
 exports.default = apply;
 
 /***/ }),
-/* 30 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2282,7 +2299,7 @@ var characters = function characters() {
 exports.default = characters;
 
 /***/ }),
-/* 31 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2294,15 +2311,15 @@ Object.defineProperty(exports, "__esModule", {
 
 var _redux = __webpack_require__(10);
 
-var _account = __webpack_require__(28);
+var _account = __webpack_require__(29);
 
 var _account2 = _interopRequireDefault(_account);
 
-var _apply = __webpack_require__(29);
+var _apply = __webpack_require__(30);
 
 var _apply2 = _interopRequireDefault(_apply);
 
-var _characters = __webpack_require__(30);
+var _characters = __webpack_require__(31);
 
 var _characters2 = _interopRequireDefault(_characters);
 
@@ -2317,7 +2334,7 @@ var todoApp = (0, _redux.combineReducers)({
 exports.default = todoApp;
 
 /***/ }),
-/* 32 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2338,7 +2355,7 @@ function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defi
 (0, _styledComponents.injectGlobal)(_templateObject, _colors2.default.darkGrey, _colors2.default.green);
 
 /***/ }),
-/* 33 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2355,15 +2372,15 @@ var _colors = __webpack_require__(9);
 
 var _colors2 = _interopRequireDefault(_colors);
 
-var _fonts = __webpack_require__(35);
+var _fonts = __webpack_require__(36);
 
 var _fonts2 = _interopRequireDefault(_fonts);
 
-var _spacings = __webpack_require__(36);
+var _spacings = __webpack_require__(37);
 
 var _spacings2 = _interopRequireDefault(_spacings);
 
-var _breakpoints = __webpack_require__(34);
+var _breakpoints = __webpack_require__(35);
 
 var _breakpoints2 = _interopRequireDefault(_breakpoints);
 
@@ -2372,7 +2389,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var theme = exports.theme = _extends({}, _colors2.default, _fonts2.default, _spacings2.default, _breakpoints2.default);
 
 /***/ }),
-/* 34 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2395,7 +2412,7 @@ var breakpoint = {
 exports.default = breakpoint;
 
 /***/ }),
-/* 35 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2413,7 +2430,7 @@ var font = {
 exports.default = font;
 
 /***/ }),
-/* 36 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2435,7 +2452,7 @@ var spacing = {
 exports.default = spacing;
 
 /***/ }),
-/* 37 */
+/* 38 */
 /***/ (function(module, exports) {
 
 module.exports = require("react-dom");
