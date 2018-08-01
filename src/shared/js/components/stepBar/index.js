@@ -48,7 +48,6 @@ function StepBar({ step, maxStep, labels, onClick }) {
     const renderSteps = Array(labels.length).fill().map((_, index) => {
         const status = index === step ? 'active'
                      : index <= maxStep ? '' : 'disabled'
-        console.log(status, index)
         return (
             <StepContainer key={index} status={status} alt={labels[index]} onClick={() => index <= maxStep ? onClick(index) : null }>
                 <Step>{index+1}</Step>

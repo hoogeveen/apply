@@ -52,13 +52,12 @@ passport.use(new BnetStrategy({
 
       return done(null, characters);
     }).catch(err => {
-      console.log(err)
+      console.log('error', err)
     })
 
 }));
 
-app.get('/auth/bnet',
-    passport.authenticate('bnet'));
+app.get('/auth/bnet', passport.authenticate('bnet'));
 
 app.get('/auth/bnet/callback',
   passport.authenticate('bnet', { failureRedirect: '/error' }),
@@ -72,8 +71,8 @@ app.get('/error', function(req, res) {
 })
 
 app.get('*', async (req, res) => {
-    console.log(req.passport)
-    if (!req.passport && !req.passport.user) {
+    console.log(req.user)
+    if (!req.user) {
       return res.redirect('/auth/bnet')
     }
 		const sheet = new ServerStyleSheet();

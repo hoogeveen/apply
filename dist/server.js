@@ -654,7 +654,7 @@ _passport2.default.use(new BnetStrategy({
 
     return done(null, characters);
   }).catch(function (err) {
-    console.log(err);
+    console.log('error', err);
   });
 }));
 
@@ -669,8 +669,8 @@ app.get('/error', function (req, res) {
 });
 
 app.get('*', async function (req, res) {
-  console.log(req.passport);
-  if (!req.passport && !req.passport.user) {
+  console.log(req.user);
+  if (!req.user) {
     return res.redirect('/auth/bnet');
   }
   var sheet = new _styledComponents.ServerStyleSheet();
@@ -1312,9 +1312,6 @@ function Role(_ref3) {
 }
 
 var mapStateToProps = function mapStateToProps(state) {
-    console.log((0, _helpers.getAvailableRoles)(state.characters.map(function (char) {
-        return char.class;
-    })));
     return {
         selectedRole: state.apply.answers.role,
         availableRoles: (0, _helpers.getAvailableRoles)(state.characters.map(function (char) {
@@ -1530,7 +1527,6 @@ function StepBar(_ref2) {
 
     var renderSteps = Array(labels.length).fill().map(function (_, index) {
         var status = index === step ? 'active' : index <= maxStep ? '' : 'disabled';
-        console.log(status, index);
         return _react2.default.createElement(
             StepContainer,
             { key: index, status: status, alt: labels[index], onClick: function onClick() {

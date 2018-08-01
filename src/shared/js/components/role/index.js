@@ -75,7 +75,6 @@ function Role({ onClick, availableRoles, selectedRole }) {
 }
 
 const mapStateToProps = state => {
-    console.log(getAvailableRoles(state.characters.map(char => char.class)))
     return {
         selectedRole: state.apply.answers.role,
         availableRoles: getAvailableRoles(state.characters.map(char => char.class))

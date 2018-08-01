@@ -5735,9 +5735,6 @@ function Role(_ref3) {
 }
 
 var mapStateToProps = function mapStateToProps(state) {
-    console.log((0, _helpers.getAvailableRoles)(state.characters.map(function (char) {
-        return char.class;
-    })));
     return {
         selectedRole: state.apply.answers.role,
         availableRoles: (0, _helpers.getAvailableRoles)(state.characters.map(function (char) {
@@ -5953,7 +5950,6 @@ function StepBar(_ref2) {
 
     var renderSteps = Array(labels.length).fill().map(function (_, index) {
         var status = index === step ? 'active' : index <= maxStep ? '' : 'disabled';
-        console.log(status, index);
         return _react2.default.createElement(
             StepContainer,
             { key: index, status: status, alt: labels[index], onClick: function onClick() {
