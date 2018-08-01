@@ -82,7 +82,10 @@ app.get('*', async (req, res) => {
     }
 		const sheet = new ServerStyleSheet();
 
-		const html = ReactDOM.renderToString(sheet.collectStyles(<App />))
+		const html = ReactDOM.renderToString(sheet.collectStyles(
+    <Provider store={store}>
+      <App />
+    </Provider>))
 		const styles = sheet.getStyleTags();
 		//render helmet data aka meta data in <head></head>
 		const helmetData = helmet.renderStatic();
@@ -127,7 +130,7 @@ function renderFullPage(html, preloadedState, helmet, styles) {
         <script>
           // WARNING: See the following for security issues around embedding JSON in HTML:
           // http://redux.js.org/docs/recipes/ServerRendering.html#security-considerations
-          window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')}
+          window.__PRELOADED_STATE__ = ${JSON.stringify(initialData).replace(/</g, '\\u003c')}
         </script>
         <script src="/dist/assets/app.bundle.js"></script>
       </body>

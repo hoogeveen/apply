@@ -1,7 +1,12 @@
 import React from 'react';
 import { hydrate } from 'react-dom';
-import App from '../shared';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import store from '../shared/js/store';
+import App from '../shared/index';
 
 hydrate((
-    <App />
+    <Provider store={store}>
+        <App />
+    </Provider>
 ), document.getElementById('root'));

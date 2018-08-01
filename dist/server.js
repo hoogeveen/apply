@@ -446,7 +446,7 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(42);
+var _reactDom = __webpack_require__(41);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -454,17 +454,15 @@ var _redux = __webpack_require__(10);
 
 var _reactRedux = __webpack_require__(2);
 
-var _reducers = __webpack_require__(36);
+var _reducers = __webpack_require__(35);
 
 var _reducers2 = _interopRequireDefault(_reducers);
 
-var _characters = __webpack_require__(31);
-
 var _styledComponents = __webpack_require__(0);
 
-var _styles = __webpack_require__(38);
+var _styles = __webpack_require__(37);
 
-__webpack_require__(37);
+__webpack_require__(36);
 
 var _app = __webpack_require__(24);
 
@@ -477,7 +475,7 @@ var store = (0, _redux.createStore)(_reducers2.default, {
         battletag: 'merijn#21686',
         email: 'mail@merijn.pt'
     },
-    characters: _characters.characters.filter(function (char) {
+    characters: characters.filter(function (char) {
         return char.level === 110;
     }),
     apply: {
@@ -494,13 +492,9 @@ var store = (0, _redux.createStore)(_reducers2.default, {
 
 exports.default = function () {
     return _react2.default.createElement(
-        _reactRedux.Provider,
-        { store: store },
-        _react2.default.createElement(
-            _styledComponents.ThemeProvider,
-            { theme: _styles.theme },
-            _react2.default.createElement(_app2.default, null)
-        )
+        _styledComponents.ThemeProvider,
+        { theme: _styles.theme },
+        _react2.default.createElement(_app2.default, null)
     );
 };
 
@@ -689,7 +683,11 @@ app.get('*', async function (req, res) {
   }
   var sheet = new _styledComponents.ServerStyleSheet();
 
-  var html = _server2.default.renderToString(sheet.collectStyles(_react2.default.createElement(_shared2.default, null)));
+  var html = _server2.default.renderToString(sheet.collectStyles(_react2.default.createElement(
+    Provider,
+    { store: store },
+    _react2.default.createElement(_shared2.default, null)
+  )));
   var styles = sheet.getStyleTags();
   //render helmet data aka meta data in <head></head>
   var helmetData = _reactHelmet2.default.renderStatic();
@@ -720,7 +718,7 @@ app.listen(port, function () {
 });
 
 function renderFullPage(html, preloadedState, helmet, styles) {
-  return '\n    <!doctype html>\n    <html>\n      <head>\n        <link rel="icon" href="/dist/favicon.ico" type="image/ico" />\n        ' + helmet.title.toString() + '\n        ' + helmet.meta.toString() + '\n\t\t\t\t' + helmet.link.toString() + '\n\t\t\t\t' + styles + '\n      </head>\n      <body>\n        <div id="root">' + html + '</div>\n        <script>\n          // WARNING: See the following for security issues around embedding JSON in HTML:\n          // http://redux.js.org/docs/recipes/ServerRendering.html#security-considerations\n          window.__PRELOADED_STATE__ = ' + JSON.stringify(preloadedState).replace(/</g, '\\u003c') + '\n        </script>\n        <script src="/dist/assets/app.bundle.js"></script>\n      </body>\n    </html>\n    ';
+  return '\n    <!doctype html>\n    <html>\n      <head>\n        <link rel="icon" href="/dist/favicon.ico" type="image/ico" />\n        ' + helmet.title.toString() + '\n        ' + helmet.meta.toString() + '\n\t\t\t\t' + helmet.link.toString() + '\n\t\t\t\t' + styles + '\n      </head>\n      <body>\n        <div id="root">' + html + '</div>\n        <script>\n          // WARNING: See the following for security issues around embedding JSON in HTML:\n          // http://redux.js.org/docs/recipes/ServerRendering.html#security-considerations\n          window.__PRELOADED_STATE__ = ' + JSON.stringify(initialData).replace(/</g, '\\u003c') + '\n        </script>\n        <script src="/dist/assets/app.bundle.js"></script>\n      </body>\n    </html>\n    ';
 }
 
 /***/ }),
@@ -757,7 +755,7 @@ var _header = __webpack_require__(7);
 
 var _header2 = _interopRequireDefault(_header);
 
-var _footer = __webpack_require__(32);
+var _footer = __webpack_require__(31);
 
 var _footer2 = _interopRequireDefault(_footer);
 
@@ -1647,644 +1645,6 @@ var ROLES = exports.ROLES = {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-var characters = exports.characters = [{
-    name: 'Iveri',
-    realm: 'Grim Batol',
-    battlegroup: 'Misery',
-    'class': 6,
-    race: 7,
-    gender: 1,
-    level: 110,
-    achievementPoints: 13510,
-    thumbnail: 'grim-batol/84/156355668-avatar.jpg',
-    spec: {
-        name: 'Blood',
-        role: 'TANK',
-        backgroundImage: 'bg-deathknight-blood',
-        icon: 'spell_deathknight_bloodpresence',
-        description: 'A dark guardian who manipulates and corrupts life energy to sustain herself in the face of an enemy onslaught.',
-        order: 0
-    },
-    lastModified: 1515202370000
-}, {
-    name: 'Remise',
-    realm: 'Aggra (Português)',
-    battlegroup: 'Misery',
-    'class': 9,
-    race: 1,
-    gender: 1,
-    level: 110,
-    achievementPoints: 13510,
-    thumbnail: 'aggra-portugues/25/158700569-avatar.jpg',
-    spec: {
-        name: 'Affliction',
-        role: 'DPS',
-        backgroundImage: 'bg-warlock-affliction',
-        icon: 'spell_shadow_deathcoil',
-        description: 'A master of shadow magic who specializes in drains and damage-over-time spells.',
-        order: 0
-    },
-    lastModified: 1516405585000
-}, {
-    name: 'Ardeche',
-    realm: 'Aggra (Português)',
-    battlegroup: 'Misery',
-    'class': 11,
-    race: 6,
-    gender: 0,
-    level: 110,
-    achievementPoints: 12780,
-    thumbnail: 'aggra-portugues/119/148242039-avatar.jpg',
-    spec: {
-        name: 'Guardian',
-        role: 'TANK',
-        backgroundImage: 'bg-druid-bear',
-        icon: 'ability_racial_bearform',
-        description: 'Takes on the form of a mighty bear to absorb damage and protect allies.',
-        order: 2
-    },
-    guild: 'Atlas',
-    guildRealm: 'Aggra (Português)',
-    lastModified: 1509028283000
-}, {
-    name: 'Misstotems',
-    realm: 'Aggra (Português)',
-    battlegroup: 'Misery',
-    'class': 7,
-    race: 9,
-    gender: 1,
-    level: 85,
-    achievementPoints: 11490,
-    thumbnail: 'aggra-portugues/120/93509752-avatar.jpg',
-    spec: {
-        name: 'Enhancement',
-        role: 'DPS',
-        backgroundImage: 'bg-shaman-enhancement',
-        icon: 'spell_shaman_improvedstormstrike',
-        description: 'A totemic warrior who strikes foes with weapons imbued with elemental power.',
-        order: 1
-    },
-    guild: 'raVen',
-    guildRealm: 'Aggra (Português)',
-    lastModified: 1489799666000
-}, {
-    name: 'Yneos',
-    realm: 'Pozzo dell\'Eternità',
-    battlegroup: 'Misery',
-    'class': 4,
-    race: 9,
-    gender: 0,
-    level: 1,
-    achievementPoints: 0,
-    thumbnail: 'pozzo-delleternita/156/105565852-avatar.jpg',
-    lastModified: 0
-}, {
-    name: 'Yneos',
-    realm: 'Jaedenar',
-    battlegroup: 'Vindication',
-    'class': 2,
-    race: 11,
-    gender: 0,
-    level: 0,
-    achievementPoints: 0,
-    thumbnail: 'jaedenar/108/159697516-avatar.jpg',
-    lastModified: 0
-}, {
-    name: 'Shammily',
-    realm: 'Aggra (Português)',
-    battlegroup: 'Misery',
-    'class': 7,
-    race: 3,
-    gender: 0,
-    level: 1,
-    achievementPoints: 0,
-    thumbnail: 'aggra-portugues/195/118404291-avatar.jpg',
-    lastModified: 0
-}, {
-    name: 'Choxi',
-    realm: 'Aggra (Português)',
-    battlegroup: 'Misery',
-    'class': 3,
-    race: 8,
-    gender: 0,
-    level: 75,
-    achievementPoints: 9005,
-    thumbnail: 'aggra-portugues/20/93611284-avatar.jpg',
-    spec: {
-        name: 'Survival',
-        role: 'DPS',
-        backgroundImage: 'bg-hunter-survival',
-        icon: 'ability_hunter_camouflage',
-        description: 'A rugged tracker who favors using animal venom, explosives and traps as deadly weapons.',
-        order: 2
-    },
-    guild: 'raVen',
-    guildRealm: 'Aggra (Português)',
-    lastModified: 1422203961000
-}, {
-    name: 'Myst',
-    realm: 'Aggra (Português)',
-    battlegroup: 'Misery',
-    'class': 10,
-    race: 26,
-    gender: 1,
-    level: 110,
-    achievementPoints: 13605,
-    thumbnail: 'aggra-portugues/210/147739346-avatar.jpg',
-    spec: {
-        name: 'Mistweaver',
-        role: 'HEALING',
-        backgroundImage: 'bg-monk-mistweaver',
-        icon: 'spell_monk_mistweaver_spec',
-        description: 'A healer who masters the mysterious art of manipulating life energies, aided by the wisdom of the Jade Serpent and Pandaren medicinal techniques.',
-        order: 1
-    },
-    guild: 'Atlas',
-    guildRealm: 'Aggra (Português)',
-    lastModified: 1514633692000
-}, {
-    name: 'Arowhead',
-    realm: 'Aggra (Português)',
-    battlegroup: 'Misery',
-    'class': 3,
-    race: 26,
-    gender: 0,
-    level: 12,
-    achievementPoints: 0,
-    thumbnail: 'aggra-portugues/106/93764202-avatar.jpg',
-    lastModified: 0
-}, {
-    name: 'Memeweaver',
-    realm: 'Aggra (Português)',
-    battlegroup: 'Misery',
-    'class': 10,
-    race: 25,
-    gender: 1,
-    level: 24,
-    achievementPoints: 0,
-    thumbnail: 'aggra-portugues/251/159230203-avatar.jpg',
-    lastModified: 1516493728000
-}, {
-    name: 'Dwena',
-    realm: 'Aggra (Português)',
-    battlegroup: 'Misery',
-    'class': 9,
-    race: 10,
-    gender: 1,
-    level: 3,
-    achievementPoints: 0,
-    thumbnail: 'aggra-portugues/168/93788328-avatar.jpg',
-    lastModified: 0
-}, {
-    name: 'Firetotem',
-    realm: 'Aggra (Português)',
-    battlegroup: 'Misery',
-    'class': 7,
-    race: 6,
-    gender: 0,
-    level: 7,
-    achievementPoints: 0,
-    thumbnail: 'aggra-portugues/223/120752095-avatar.jpg',
-    lastModified: 0
-}, {
-    name: 'Hashtotems',
-    realm: 'Aggra (Português)',
-    battlegroup: 'Misery',
-    'class': 7,
-    race: 2,
-    gender: 0,
-    level: 3,
-    achievementPoints: 0,
-    thumbnail: 'aggra-portugues/59/119865403-avatar.jpg',
-    lastModified: 0
-}, {
-    name: 'Rebels',
-    realm: 'Aggra (Português)',
-    battlegroup: 'Misery',
-    'class': 3,
-    race: 9,
-    gender: 1,
-    level: 88,
-    achievementPoints: 10200,
-    thumbnail: 'aggra-portugues/217/93537753-avatar.jpg',
-    spec: {
-        name: 'Survival',
-        role: 'DPS',
-        backgroundImage: 'bg-hunter-survival',
-        icon: 'ability_hunter_camouflage',
-        description: 'A rugged tracker who favors using animal venom, explosives and traps as deadly weapons.',
-        order: 2
-    },
-    guild: 'raVen',
-    guildRealm: 'Aggra (Português)',
-    lastModified: 1489799680000
-}, {
-    name: 'Kinling',
-    realm: 'Aggra (Português)',
-    battlegroup: 'Misery',
-    'class': 1,
-    race: 2,
-    gender: 0,
-    level: 2,
-    achievementPoints: 0,
-    thumbnail: 'aggra-portugues/156/93618076-avatar.jpg',
-    lastModified: 0
-}, {
-    name: 'Dwena',
-    realm: 'The Maelstrom',
-    battlegroup: 'Vindication',
-    'class': 5,
-    race: 8,
-    gender: 1,
-    level: 0,
-    achievementPoints: 0,
-    thumbnail: 'the-maelstrom/27/123639323-avatar.jpg',
-    lastModified: 0
-}, {
-    name: 'Bplague',
-    realm: 'Aggra (Português)',
-    battlegroup: 'Misery',
-    'class': 6,
-    race: 2,
-    gender: 0,
-    level: 67,
-    achievementPoints: 9005,
-    thumbnail: 'aggra-portugues/73/120298057-avatar.jpg',
-    spec: {
-        name: 'Blood',
-        role: 'TANK',
-        backgroundImage: 'bg-deathknight-blood',
-        icon: 'spell_deathknight_bloodpresence',
-        description: 'A dark guardian who manipulates and corrupts life energy to sustain herself in the face of an enemy onslaught.',
-        order: 0
-    },
-    guild: 'Snakes',
-    guildRealm: 'Aggra (Português)',
-    lastModified: 1422095981000
-}, {
-    name: 'Kalaos',
-    realm: 'Jaedenar',
-    battlegroup: 'Vindication',
-    'class': 11,
-    race: 4,
-    gender: 0,
-    level: 0,
-    achievementPoints: 0,
-    thumbnail: 'jaedenar/99/159697507-avatar.jpg',
-    lastModified: 0
-}, {
-    name: 'Xianqi',
-    realm: 'Aggra (Português)',
-    battlegroup: 'Misery',
-    'class': 7,
-    race: 26,
-    gender: 1,
-    level: 69,
-    achievementPoints: 12610,
-    thumbnail: 'aggra-portugues/251/150729979-avatar.jpg',
-    spec: {
-        name: 'Restoration',
-        role: 'HEALING',
-        backgroundImage: 'bg-shaman-restoration',
-        icon: 'spell_nature_magicimmunity',
-        description: 'A healer who calls upon ancestral spirits and the cleansing power of water to mend allies\' wounds.',
-        order: 2
-    },
-    lastModified: 1489270874000
-}, {
-    name: 'Morgana',
-    realm: 'Outland',
-    battlegroup: 'Misery',
-    'class': 8,
-    race: 7,
-    gender: 1,
-    level: 110,
-    achievementPoints: 12870,
-    thumbnail: 'outland/189/157089725-avatar.jpg',
-    spec: {
-        name: 'Fire',
-        role: 'DPS',
-        backgroundImage: 'bg-mage-fire',
-        icon: 'spell_fire_firebolt02',
-        description: 'Ignite enemies with balls of fire and combustive flames.',
-        order: 1
-    },
-    lastModified: 1512595848000
-}, {
-    name: 'Brokenbass',
-    realm: 'Aggra (Português)',
-    battlegroup: 'Misery',
-    'class': 8,
-    race: 10,
-    gender: 0,
-    level: 7,
-    achievementPoints: 0,
-    thumbnail: 'aggra-portugues/127/120797311-avatar.jpg',
-    lastModified: 0
-}, {
-    name: 'Ardeche',
-    realm: 'Blackrock',
-    battlegroup: 'Glutsturm / Emberstorm',
-    'class': 1,
-    race: 5,
-    gender: 0,
-    level: 1,
-    achievementPoints: 0,
-    thumbnail: 'blackrock/117/126893429-avatar.jpg',
-    lastModified: 0
-}, {
-    name: 'Remise',
-    realm: 'C\'Thun',
-    battlegroup: 'Cruelty / Crueldad',
-    'class': 4,
-    race: 9,
-    gender: 0,
-    level: 1,
-    achievementPoints: 0,
-    thumbnail: 'cthun/122/133434490-avatar.jpg',
-    lastModified: 0
-}, {
-    name: 'Quanta',
-    realm: 'Aggra (Português)',
-    battlegroup: 'Misery',
-    'class': 2,
-    race: 1,
-    gender: 1,
-    level: 110,
-    achievementPoints: 13510,
-    thumbnail: 'aggra-portugues/13/155853069-avatar.jpg',
-    spec: {
-        name: 'Holy',
-        role: 'HEALING',
-        backgroundImage: 'bg-paladin-holy',
-        icon: 'spell_holy_holybolt',
-        description: 'Invokes the power of the Light to protect and to heal.',
-        order: 0
-    },
-    guild: 'In Excelsis',
-    guildRealm: 'Grim Batol',
-    lastModified: 1516736396000
-}, {
-    name: 'Celcius',
-    realm: 'Aggra (Português)',
-    battlegroup: 'Misery',
-    'class': 8,
-    race: 9,
-    gender: 0,
-    level: 92,
-    achievementPoints: 11490,
-    thumbnail: 'aggra-portugues/172/93476524-avatar.jpg',
-    spec: {
-        name: 'Fire',
-        role: 'DPS',
-        backgroundImage: 'bg-mage-fire',
-        icon: 'spell_fire_firebolt02',
-        description: 'Ignite enemies with balls of fire and combustive flames.',
-        order: 1
-    },
-    guild: 'Legion of Azeroth',
-    guildRealm: 'Aggra (Português)',
-    lastModified: 1508954213000
-}, {
-    name: 'Yneos',
-    realm: 'Aggra (Português)',
-    battlegroup: 'Misery',
-    'class': 5,
-    race: 1,
-    gender: 1,
-    level: 110,
-    achievementPoints: 13510,
-    thumbnail: 'aggra-portugues/139/157339275-avatar.jpg',
-    spec: {
-        name: 'Shadow',
-        role: 'DPS',
-        backgroundImage: 'bg-priest-shadow',
-        icon: 'spell_shadow_shadowwordpain',
-        description: 'Uses sinister Shadow magic, especially damage-over-time spells, to eradicate enemies.',
-        order: 2
-    },
-    guild: 'In Excelsis',
-    guildRealm: 'Grim Batol',
-    lastModified: 1516741980000
-}, {
-    name: 'Ardeche',
-    realm: 'Grim Batol',
-    battlegroup: 'Misery',
-    'class': 11,
-    race: 4,
-    gender: 1,
-    level: 110,
-    achievementPoints: 12890,
-    thumbnail: 'grim-batol/163/155362979-avatar.jpg',
-    spec: {
-        name: 'Restoration',
-        role: 'HEALING',
-        backgroundImage: 'bg-druid-restoration',
-        icon: 'spell_nature_healingtouch',
-        description: 'Uses heal-over-time Nature spells to keep allies alive.',
-        order: 3
-    },
-    guild: 'Oracle',
-    guildRealm: 'Grim Batol',
-    lastModified: 1516488175000
-}, {
-    name: 'Remise',
-    realm: 'Bronzebeard',
-    battlegroup: 'Reckoning / Abrechnung',
-    'class': 9,
-    race: 9,
-    gender: 1,
-    level: 1,
-    achievementPoints: 0,
-    thumbnail: 'bronzebeard/158/111401886-avatar.jpg',
-    lastModified: 0
-}, {
-    name: 'Elementi',
-    realm: 'Aggra (Português)',
-    battlegroup: 'Misery',
-    'class': 7,
-    race: 25,
-    gender: 1,
-    level: 19,
-    achievementPoints: 0,
-    thumbnail: 'aggra-portugues/84/159167828-avatar.jpg',
-    lastModified: 1516397240000
-}, {
-    name: 'Glaives',
-    realm: 'Aggra (Português)',
-    battlegroup: 'Misery',
-    'class': 12,
-    race: 4,
-    gender: 1,
-    level: 103,
-    achievementPoints: 0,
-    thumbnail: 'aggra-portugues/69/153925445-avatar.jpg',
-    lastModified: 1514581795000
-}, {
-    name: 'Akka',
-    realm: 'Grim Batol',
-    battlegroup: 'Misery',
-    'class': 4,
-    race: 4,
-    gender: 1,
-    level: 15,
-    achievementPoints: 0,
-    thumbnail: 'grim-batol/11/156482571-avatar.jpg',
-    lastModified: 1509894860000
-}, {
-    name: 'Rathyan',
-    realm: 'Aggra (Português)',
-    battlegroup: 'Misery',
-    'class': 3,
-    race: 9,
-    gender: 0,
-    level: 67,
-    achievementPoints: 9005,
-    thumbnail: 'aggra-portugues/188/93605820-avatar.jpg',
-    spec: {
-        name: 'Survival',
-        role: 'DPS',
-        backgroundImage: 'bg-hunter-survival',
-        icon: 'ability_hunter_camouflage',
-        description: 'A rugged tracker who favors using animal venom, explosives and traps as deadly weapons.',
-        order: 2
-    },
-    guild: 'raVen',
-    guildRealm: 'Aggra (Português)',
-    lastModified: 1422189537000
-}, {
-    name: 'Mits',
-    realm: 'Aggra (Português)',
-    battlegroup: 'Misery',
-    'class': 7,
-    race: 2,
-    gender: 0,
-    level: 43,
-    achievementPoints: 9005,
-    thumbnail: 'aggra-portugues/118/93615990-avatar.jpg',
-    spec: {
-        name: 'Restoration',
-        role: 'HEALING',
-        backgroundImage: 'bg-shaman-restoration',
-        icon: 'spell_nature_magicimmunity',
-        description: 'A healer who calls upon ancestral spirits and the cleansing power of water to mend allies\' wounds.',
-        order: 2
-    },
-    lastModified: 1422207752000
-}, {
-    name: 'Keilon',
-    realm: 'Aggra (Português)',
-    battlegroup: 'Misery',
-    'class': 9,
-    race: 10,
-    gender: 0,
-    level: 26,
-    achievementPoints: 9005,
-    thumbnail: 'aggra-portugues/151/93618327-avatar.jpg',
-    spec: {
-        name: 'Destruction',
-        role: 'DPS',
-        backgroundImage: 'bg-warlock-destruction',
-        icon: 'spell_shadow_rainoffire',
-        description: 'A master of chaos who calls down fire to burn and demolish enemies.',
-        order: 2
-    },
-    lastModified: 1422105860000
-}, {
-    name: 'Yneos',
-    realm: 'Grim Batol',
-    battlegroup: 'Misery',
-    'class': 5,
-    race: 9,
-    gender: 1,
-    level: 110,
-    achievementPoints: 13755,
-    thumbnail: 'grim-batol/151/157344407-avatar.jpg',
-    spec: {
-        name: 'Discipline',
-        role: 'HEALING',
-        backgroundImage: 'bg-priest-discipline',
-        icon: 'spell_holy_powerwordshield',
-        description: 'Uses magic to shield allies from taking damage as well as heal their wounds.',
-        order: 0
-    },
-    guild: 'Atlas',
-    guildRealm: 'Aggra (Português)',
-    lastModified: 1516556373000
-}, {
-    name: 'Iveri',
-    realm: 'Aggra (Português)',
-    battlegroup: 'Misery',
-    'class': 6,
-    race: 9,
-    gender: 1,
-    level: 91,
-    achievementPoints: 12920,
-    thumbnail: 'aggra-portugues/204/93509580-avatar.jpg',
-    spec: {
-        name: 'Blood',
-        role: 'TANK',
-        backgroundImage: 'bg-deathknight-blood',
-        icon: 'spell_deathknight_bloodpresence',
-        description: 'A dark guardian who manipulates and corrupts life energy to sustain herself in the face of an enemy onslaught.',
-        order: 0
-    },
-    lastModified: 1494614029000
-}, {
-    name: 'Shield',
-    realm: 'Aggra (Português)',
-    battlegroup: 'Misery',
-    'class': 5,
-    race: 8,
-    gender: 0,
-    level: 11,
-    achievementPoints: 0,
-    thumbnail: 'aggra-portugues/207/93598415-avatar.jpg',
-    lastModified: 0
-}, {
-    name: 'Chailah',
-    realm: 'Aggra (Português)',
-    battlegroup: 'Misery',
-    'class': 2,
-    race: 10,
-    gender: 1,
-    level: 28,
-    achievementPoints: 9005,
-    thumbnail: 'aggra-portugues/159/93631903-avatar.jpg',
-    spec: {
-        name: 'Retribution',
-        role: 'DPS',
-        backgroundImage: 'bg-paladin-retribution',
-        icon: 'spell_holy_auraoflight',
-        description: 'A righteous crusader who judges and punishes opponents with weapons and Holy magic.',
-        order: 2
-    },
-    guild: 'Death Ravens',
-    guildRealm: 'Grim Batol',
-    lastModified: 1422095847000
-}, {
-    name: 'Edward',
-    realm: 'Xavius',
-    battlegroup: 'Glutsturm / Emberstorm',
-    'class': 1,
-    race: 2,
-    gender: 0,
-    level: 2,
-    achievementPoints: 0,
-    thumbnail: 'xavius/23/110910231-avatar.jpg',
-    lastModified: 0
-}];
-
-/***/ }),
-/* 32 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
 
 var _templateObject = _taggedTemplateLiteral(['\n    text-align: center;\n    margin-top: 70px;\n'], ['\n    text-align: center;\n    margin-top: 70px;\n']);
 
@@ -2301,7 +1661,7 @@ var Footer = _styledComponents2.default.div(_templateObject);
 exports.default = Footer;
 
 /***/ }),
-/* 33 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2323,7 +1683,7 @@ var account = function account() {
 exports.default = account;
 
 /***/ }),
-/* 34 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2364,7 +1724,7 @@ var apply = function apply() {
 exports.default = apply;
 
 /***/ }),
-/* 35 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2386,7 +1746,7 @@ var characters = function characters() {
 exports.default = characters;
 
 /***/ }),
-/* 36 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2398,15 +1758,15 @@ Object.defineProperty(exports, "__esModule", {
 
 var _redux = __webpack_require__(10);
 
-var _account = __webpack_require__(33);
+var _account = __webpack_require__(32);
 
 var _account2 = _interopRequireDefault(_account);
 
-var _apply = __webpack_require__(34);
+var _apply = __webpack_require__(33);
 
 var _apply2 = _interopRequireDefault(_apply);
 
-var _characters = __webpack_require__(35);
+var _characters = __webpack_require__(34);
 
 var _characters2 = _interopRequireDefault(_characters);
 
@@ -2421,7 +1781,7 @@ var todoApp = (0, _redux.combineReducers)({
 exports.default = todoApp;
 
 /***/ }),
-/* 37 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2442,7 +1802,7 @@ function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defi
 (0, _styledComponents.injectGlobal)(_templateObject, _colors2.default.darkGrey, _colors2.default.green);
 
 /***/ }),
-/* 38 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2459,15 +1819,15 @@ var _colors = __webpack_require__(9);
 
 var _colors2 = _interopRequireDefault(_colors);
 
-var _fonts = __webpack_require__(40);
+var _fonts = __webpack_require__(39);
 
 var _fonts2 = _interopRequireDefault(_fonts);
 
-var _spacings = __webpack_require__(41);
+var _spacings = __webpack_require__(40);
 
 var _spacings2 = _interopRequireDefault(_spacings);
 
-var _breakpoints = __webpack_require__(39);
+var _breakpoints = __webpack_require__(38);
 
 var _breakpoints2 = _interopRequireDefault(_breakpoints);
 
@@ -2476,7 +1836,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var theme = exports.theme = _extends({}, _colors2.default, _fonts2.default, _spacings2.default, _breakpoints2.default);
 
 /***/ }),
-/* 39 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2499,7 +1859,7 @@ var breakpoint = {
 exports.default = breakpoint;
 
 /***/ }),
-/* 40 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2517,7 +1877,7 @@ var font = {
 exports.default = font;
 
 /***/ }),
-/* 41 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2539,7 +1899,7 @@ var spacing = {
 exports.default = spacing;
 
 /***/ }),
-/* 42 */
+/* 41 */
 /***/ (function(module, exports) {
 
 module.exports = require("react-dom");
