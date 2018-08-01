@@ -760,18 +760,17 @@ app.get('*', async function (req, res) {
 
 var port = process.env.PORT || 9000;
 
-var httpsOptions = {
-  key: _fs2.default.readFileSync('./key.pem'),
-  cert: _fs2.default.readFileSync('./cert.pem')
-};
-_https2.default.createServer(httpsOptions, app).listen(port, function () {
-  console.log('server running at ' + port);
+// const httpsOptions = {
+//   key: fs.readFileSync('./key.pem'),
+//   cert: fs.readFileSync('./cert.pem')
+// }
+// https.createServer(httpsOptions, app).listen(port, () => {
+//   console.log('server running at ' + port)
+// })
+
+app.listen(port, function () {
+  console.log('app running on localhost:' + port);
 });
-
-// app.listen(port, function () {
-// 	console.log('app running on localhost:' + port);
-// });
-
 
 function renderFullPage(html, preloadedState, helmet, styles) {
   return '\n    <!doctype html>\n    <html>\n      <head>\n        <link rel="icon" href="/dist/favicon.ico" type="image/ico" />\n        ' + helmet.title.toString() + '\n        ' + helmet.meta.toString() + '\n\t\t\t\t' + helmet.link.toString() + '\n\t\t\t\t' + styles + '\n      </head>\n      <body>\n        <div id="root">' + html + '</div>\n        <script>\n          // WARNING: See the following for security issues around embedding JSON in HTML:\n          // http://redux.js.org/docs/recipes/ServerRendering.html#security-considerations\n          window.__PRELOADED_STATE__ = ' + JSON.stringify(preloadedState).replace(/</g, '\\u003c') + '\n        </script>\n        <script src="/dist/assets/main.bundle.js"></script>\n      </body>\n    </html>\n    ';

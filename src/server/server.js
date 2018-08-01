@@ -121,17 +121,17 @@ app.get('*', async (req, res) => {
 
 const port = process.env.PORT || 9000;
 
-const httpsOptions = {
-  key: fs.readFileSync('./key.pem'),
-  cert: fs.readFileSync('./cert.pem')
-}
-https.createServer(httpsOptions, app).listen(port, () => {
-  console.log('server running at ' + port)
-})
+// const httpsOptions = {
+//   key: fs.readFileSync('./key.pem'),
+//   cert: fs.readFileSync('./cert.pem')
+// }
+// https.createServer(httpsOptions, app).listen(port, () => {
+//   console.log('server running at ' + port)
+// })
 
-// app.listen(port, function () {
-// 	console.log('app running on localhost:' + port);
-// });
+app.listen(port, function () {
+	console.log('app running on localhost:' + port);
+});
 
 
 function renderFullPage(html, preloadedState, helmet, styles) {
