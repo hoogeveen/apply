@@ -15,7 +15,7 @@ const app = express();
 
 app.use('/dist', express.static('./dist'));
 
-app.use(cookieParser())
+app.use(cookieParser('keyboard cat'))
 
 app.use(session({
   secret: 'keyboard cat',

@@ -624,7 +624,7 @@ var app = (0, _express2.default)();
 
 app.use('/dist', _express2.default.static('./dist'));
 
-app.use((0, _cookieParser2.default)());
+app.use((0, _cookieParser2.default)('keyboard cat'));
 
 app.use((0, _expressSession2.default)({
   secret: 'keyboard cat',
