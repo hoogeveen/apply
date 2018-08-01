@@ -71,7 +71,7 @@ function Characters({ characters, selectedCharacter, onClick }) {
     console.log(characters)
     const renderCharacters = characters.map((character, index) => {
         return (
-            <Character image={character.thumbnail.replace('avatar', 'profilemain')} active={`${selectedCharacter.name}${selectedCharacter.realm}` === `${character.name}${character.realm}`} onClick={() => onClick(character)} key={index}>
+            <Character image={character.thumbnail.replace('avatar', 'main')} active={`${selectedCharacter.name}${selectedCharacter.realm}` === `${character.name}${character.realm}`} onClick={() => onClick(character)} key={index}>
                 <Gradient />
                 <OptionTitle>{character.name}</OptionTitle>
                 <OptionSubtitle charClass={character['class']}>

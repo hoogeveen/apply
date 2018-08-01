@@ -1101,7 +1101,7 @@ function Characters(_ref4) {
     var renderCharacters = characters.map(function (character, index) {
         return _react2.default.createElement(
             Character,
-            { image: character.thumbnail.replace('avatar', 'profilemain'), active: '' + selectedCharacter.name + selectedCharacter.realm === '' + character.name + character.realm, onClick: function onClick() {
+            { image: character.thumbnail.replace('avatar', 'main'), active: '' + selectedCharacter.name + selectedCharacter.realm === '' + character.name + character.realm, onClick: function onClick() {
                     return _onClick(character);
                 }, key: index },
             _react2.default.createElement(Gradient, null),
