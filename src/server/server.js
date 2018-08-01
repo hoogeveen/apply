@@ -72,6 +72,7 @@ app.get('/error', function(req, res) {
 })
 
 app.get('*', async (req, res) => {
+    console.log(req.user)
     if (!req.user) {
       return res.redirect('/auth/bnet')
     }
