@@ -97,17 +97,11 @@ app.get('*', async (req, res) => {
 		res.send(renderFullPage(html, initialData, helmetData, styles))
 });
 
-// const port = process.env.PORT || 9000;
-// app.listen(port, function () {
-// 	console.log('app running on localhost:' + port);
-// });
+const port = process.env.PORT || 9000;
+app.listen(port, function () {
+	console.log('app running on localhost:' + port);
+});
 
-var sslOptions = {
-  key: fs.readFileSync('./key.pem'),
-  cert: fs.readFileSync('./cert.pem')
-};
-
-https.createServer(sslOptions, app).listen(8443)
 
 function renderFullPage(html, preloadedState, helmet, styles) {
 	return `
