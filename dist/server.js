@@ -622,6 +622,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // <-- importing ServerStyleSheet
 var app = (0, _express2.default)();
 
+app.set('trust proxy', true);
+
 app.use('/dist', _express2.default.static('./dist'));
 
 app.use((0, _cookieParser2.default)('keyboard cat'));

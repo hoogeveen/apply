@@ -13,6 +13,8 @@ import cookieParser from 'cookie-parser'
 import { ServerStyleSheet } from 'styled-components'; // <-- importing ServerStyleSheet
 const app = express();
 
+app.set('trust proxy', true);
+
 app.use('/dist', express.static('./dist'));
 
 app.use(cookieParser('keyboard cat'))
