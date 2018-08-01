@@ -49,7 +49,7 @@ passport.use(new BnetStrategy({
         'content-type': 'application/json'
       }
     }).then(res => res.json()).then(characters => {
-      console.log(characters)
+
       return done(null, characters);
     }).catch(err => {
       console.log(err)
@@ -72,7 +72,7 @@ app.get('/error', function(req, res) {
 })
 
 app.get('*', async (req, res) => {
-    console.log(req.user)
+    console.log(req)
     if (!req.user) {
       return res.redirect('/auth/bnet')
     }

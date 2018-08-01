@@ -651,7 +651,7 @@ _passport2.default.use(new BnetStrategy({
   }).then(function (res) {
     return res.json();
   }).then(function (characters) {
-    console.log(characters);
+
     return done(null, characters);
   }).catch(function (err) {
     console.log(err);
@@ -669,7 +669,7 @@ app.get('/error', function (req, res) {
 });
 
 app.get('*', async function (req, res) {
-  console.log(req.user);
+  console.log(req);
   if (!req.user) {
     return res.redirect('/auth/bnet');
   }
