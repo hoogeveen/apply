@@ -16,6 +16,7 @@
   "dependencies": {
     "axios": "^0.16.2",
     "babel-plugin-styled-components": "^1.5.1",
+    "cookie-parser": "^1.4.3",
     "express": "^4.15.2",
     "express-session": "^1.15.6",
     "node-fetch": "^2.2.0",
