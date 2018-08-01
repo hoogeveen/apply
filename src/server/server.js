@@ -8,11 +8,14 @@ import session from 'express-session'
 import https from 'https'
 import fs from 'fs'
 import fetch from 'node-fetch';
+import cookieParser from 'cookie-parser'
 
 import { ServerStyleSheet } from 'styled-components'; // <-- importing ServerStyleSheet
 const app = express();
 
 app.use('/dist', express.static('./dist'));
+
+app.use(cookieParser())
 
 app.use(session({
   secret: 'keyboard cat',
