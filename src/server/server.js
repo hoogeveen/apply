@@ -18,8 +18,8 @@ var BNET_SECRET = '4UCemDtCt6e52UvSTktJjDyM3TEfgNMJ'
 passport.use(new BnetStrategy({
     clientID: BNET_ID,
     clientSecret: BNET_SECRET,
-    callbackURL: "https://localhost:3000/auth/bnet/callback",
-    region: "us"
+    callbackURL: "https://inexcels.is/auth/bnet/callback",
+    region: "eu"
 }, function(accessToken, refreshToken, profile, done) {
     return done(null, profile);
 }));
