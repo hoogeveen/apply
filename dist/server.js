@@ -575,15 +575,15 @@ var app = (0, _express2.default)();
 app.use('/dist', _express2.default.static('./dist'));
 
 var BnetStrategy = __webpack_require__(14).Strategy;
-var BNET_ID = 'pys86q9u6vcjxan2yzjdud8h9cckq6y2';
-var BNET_SECRET = '4UCemDtCt6e52UvSTktJjDyM3TEfgNMJ';
+var BNET_ID = 'gy436v5phwuxt5quu8x7n99avgsebghd';
+var BNET_SECRET = 'DV983WRzn45DWyTz2zkfTCU2Xv7uKhUh';
 
 // Use the BnetStrategy within Passport.
 _passport2.default.use(new BnetStrategy({
   clientID: BNET_ID,
   clientSecret: BNET_SECRET,
-  callbackURL: "https://localhost:3000/auth/bnet/callback",
-  region: "us"
+  callbackURL: "https://inexcels.is/auth/bnet/callback",
+  region: "eu"
 }, function (accessToken, refreshToken, profile, done) {
   return done(null, profile);
 }));
@@ -698,7 +698,7 @@ function AlternativeSpecialization(_ref4) {
     var renderSpecializations = alternativeSpecializations.map(function (spec, index) {
         return _react2.default.createElement(
             Option,
-            { image: (0, _helpers.getClassName)(charClass) + '/' + spec.toLowerCase(), onClick: function onClick() {
+            { image: (0, _helpers.getClassName)(charClass).replace(' ', '_') + '/' + spec.toLowerCase().replace(' ', '_'), onClick: function onClick() {
                     return _onClick(spec);
                 }, key: index },
             _react2.default.createElement(Gradient, null),
@@ -1317,7 +1317,7 @@ function Specialization(_ref3) {
     var renderSpecializations = specializations.map(function (spec, index) {
         return _react2.default.createElement(
             Option,
-            { image: (0, _helpers.getClassName)(charClass) + '/' + spec.toLowerCase(), onClick: function onClick() {
+            { image: (0, _helpers.getClassName)(charClass).replace(' ', '_') + '/' + spec.toLowerCase().replace(' ', '_'), onClick: function onClick() {
                     return _onClick(spec);
                 }, key: index },
             _react2.default.createElement(Gradient, null),
