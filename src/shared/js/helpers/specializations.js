@@ -68,7 +68,7 @@ specializations[CLASSES.ROGUE] = {
 
 specializations[CLASSES.WARRIOR] = {
     FURY: ROLES.MELEE,
-    PROTERCTION: ROLES.TANK,
+    PROTECTION: ROLES.TANK,
     ARMS: ROLES.MELEE
 }
 
