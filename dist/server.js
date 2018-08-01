@@ -758,15 +758,10 @@ app.get('*', async function (req, res) {
   res.send(renderFullPage(html, store.getState(), helmetData, styles));
 });
 
-var httpsOptions = {
-  key: _fs2.default.readFileSync('./key.pem'),
-  cert: _fs2.default.readFileSync('./cert.pem')
-};
-
 var port = process.env.PORT || 9000;
 
-var server = _https2.default.createServer(httpsOptions, app).listen(port, function () {
-  console.log('server running at ' + port);
+app.listen(port, function () {
+  console.log('app running on localhost:' + port);
 });
 
 function renderFullPage(html, preloadedState, helmet, styles) {
