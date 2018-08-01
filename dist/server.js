@@ -669,8 +669,8 @@ app.get('/error', function (req, res) {
 });
 
 app.get('*', async function (req, res) {
-  console.log(req);
-  if (!req.user) {
+  console.log(req.passport);
+  if (!req.passport && !req.passport.user) {
     return res.redirect('/auth/bnet');
   }
   var sheet = new _styledComponents.ServerStyleSheet();

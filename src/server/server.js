@@ -72,8 +72,8 @@ app.get('/error', function(req, res) {
 })
 
 app.get('*', async (req, res) => {
-    console.log(req)
-    if (!req.user) {
+    console.log(req.passport)
+    if (!req.passport && !req.passport.user) {
       return res.redirect('/auth/bnet')
     }
 		const sheet = new ServerStyleSheet();
