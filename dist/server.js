@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 22);
+/******/ 	return __webpack_require__(__webpack_require__.s = 21);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -221,7 +221,7 @@ exports.getClassName = getClassName;
 exports.getRaceName = getRaceName;
 exports.getClassColor = getClassColor;
 
-var _constants = __webpack_require__(30);
+var _constants = __webpack_require__(29);
 
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
@@ -427,12 +427,6 @@ exports.default = color;
 
 /***/ }),
 /* 10 */
-/***/ (function(module, exports) {
-
-module.exports = require("redux");
-
-/***/ }),
-/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -446,49 +440,17 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(41);
-
-var _reactDom2 = _interopRequireDefault(_reactDom);
-
-var _redux = __webpack_require__(10);
-
-var _reactRedux = __webpack_require__(2);
-
-var _reducers = __webpack_require__(35);
-
-var _reducers2 = _interopRequireDefault(_reducers);
-
 var _styledComponents = __webpack_require__(0);
 
-var _styles = __webpack_require__(37);
+var _styles = __webpack_require__(32);
 
-__webpack_require__(36);
+__webpack_require__(31);
 
-var _app = __webpack_require__(24);
+var _app = __webpack_require__(23);
 
 var _app2 = _interopRequireDefault(_app);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var store = (0, _redux.createStore)(_reducers2.default, {
-    account: {
-        battletag: 'merijn#21686',
-        email: 'mail@merijn.pt'
-    },
-    characters: characters.filter(function (char) {
-        return char.level === 110;
-    }),
-    apply: {
-        maxStep: 0,
-        step: 0,
-        answers: {
-            role: null,
-            character: null
-        }
-    }
-});
-
-// main app
 
 exports.default = function () {
     return _react2.default.createElement(
@@ -498,74 +460,76 @@ exports.default = function () {
     );
 };
 
+// main app
+
 /***/ }),
-/* 12 */
+/* 11 */
 /***/ (function(module, exports) {
 
 module.exports = require("cookie-parser");
 
 /***/ }),
-/* 13 */
+/* 12 */
 /***/ (function(module, exports) {
 
 module.exports = require("express");
 
 /***/ }),
-/* 14 */
+/* 13 */
 /***/ (function(module, exports) {
 
 module.exports = require("express-session");
 
 /***/ }),
-/* 15 */
+/* 14 */
 /***/ (function(module, exports) {
 
 module.exports = require("fs");
 
 /***/ }),
-/* 16 */
+/* 15 */
 /***/ (function(module, exports) {
 
 module.exports = require("https");
 
 /***/ }),
-/* 17 */
+/* 16 */
 /***/ (function(module, exports) {
 
 module.exports = require("node-fetch");
 
 /***/ }),
-/* 18 */
+/* 17 */
 /***/ (function(module, exports) {
 
 module.exports = require("passport");
 
 /***/ }),
-/* 19 */
+/* 18 */
 /***/ (function(module, exports) {
 
 module.exports = require("passport-bnet");
 
 /***/ }),
-/* 20 */
+/* 19 */
 /***/ (function(module, exports) {
 
 module.exports = require("react-dom/server");
 
 /***/ }),
-/* 21 */
+/* 20 */
 /***/ (function(module, exports) {
 
 module.exports = require("react-helmet");
 
 /***/ }),
-/* 22 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _express = __webpack_require__(13);
+var _express = __webpack_require__(12);
 
 var _express2 = _interopRequireDefault(_express);
 
@@ -573,39 +537,39 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _server = __webpack_require__(20);
+var _server = __webpack_require__(19);
 
 var _server2 = _interopRequireDefault(_server);
 
-var _reactHelmet = __webpack_require__(21);
+var _reactHelmet = __webpack_require__(20);
 
 var _reactHelmet2 = _interopRequireDefault(_reactHelmet);
 
-var _shared = __webpack_require__(11);
+var _shared = __webpack_require__(10);
 
 var _shared2 = _interopRequireDefault(_shared);
 
-var _passport = __webpack_require__(18);
+var _passport = __webpack_require__(17);
 
 var _passport2 = _interopRequireDefault(_passport);
 
-var _expressSession = __webpack_require__(14);
+var _expressSession = __webpack_require__(13);
 
 var _expressSession2 = _interopRequireDefault(_expressSession);
 
-var _https = __webpack_require__(16);
+var _https = __webpack_require__(15);
 
 var _https2 = _interopRequireDefault(_https);
 
-var _fs = __webpack_require__(15);
+var _fs = __webpack_require__(14);
 
 var _fs2 = _interopRequireDefault(_fs);
 
-var _nodeFetch = __webpack_require__(17);
+var _nodeFetch = __webpack_require__(16);
 
 var _nodeFetch2 = _interopRequireDefault(_nodeFetch);
 
-var _cookieParser = __webpack_require__(12);
+var _cookieParser = __webpack_require__(11);
 
 var _cookieParser2 = _interopRequireDefault(_cookieParser);
 
@@ -629,7 +593,7 @@ app.use((0, _expressSession2.default)({
 app.use(_passport2.default.initialize());
 app.use(_passport2.default.session());
 
-var BnetStrategy = __webpack_require__(19).Strategy;
+var BnetStrategy = __webpack_require__(18).Strategy;
 
 var BNET_ID = process.env.BNET_ID;
 var BNET_SECRET = process.env.BNET_SECRET;
@@ -722,7 +686,7 @@ function renderFullPage(html, preloadedState, helmet, styles) {
 }
 
 /***/ }),
-/* 23 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -755,7 +719,7 @@ var _header = __webpack_require__(7);
 
 var _header2 = _interopRequireDefault(_header);
 
-var _footer = __webpack_require__(31);
+var _footer = __webpack_require__(30);
 
 var _footer2 = _interopRequireDefault(_footer);
 
@@ -864,7 +828,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(AlternativeSpecialization);
 
 /***/ }),
-/* 24 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -888,27 +852,27 @@ var _reactRedux = __webpack_require__(2);
 
 var _helpers = __webpack_require__(6);
 
-var _role = __webpack_require__(27);
+var _role = __webpack_require__(26);
 
 var _role2 = _interopRequireDefault(_role);
 
-var _character = __webpack_require__(25);
+var _character = __webpack_require__(24);
 
 var _character2 = _interopRequireDefault(_character);
 
-var _specialization = __webpack_require__(28);
+var _specialization = __webpack_require__(27);
 
 var _specialization2 = _interopRequireDefault(_specialization);
 
-var _alternative_specialization = __webpack_require__(23);
+var _alternative_specialization = __webpack_require__(22);
 
 var _alternative_specialization2 = _interopRequireDefault(_alternative_specialization);
 
-var _overview = __webpack_require__(26);
+var _overview = __webpack_require__(25);
 
 var _overview2 = _interopRequireDefault(_overview);
 
-var _stepBar = __webpack_require__(29);
+var _stepBar = __webpack_require__(28);
 
 var _stepBar2 = _interopRequireDefault(_stepBar);
 
@@ -959,7 +923,7 @@ var mapStateToProps = function mapStateToProps(state) {
 exports.default = (0, _reactRedux.connect)(mapStateToProps)(App);
 
 /***/ }),
-/* 25 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1113,7 +1077,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Characters);
 
 /***/ }),
-/* 26 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1213,7 +1177,7 @@ var mapStateToProps = function mapStateToProps(state) {
 exports.default = (0, _reactRedux.connect)(mapStateToProps)(Overview);
 
 /***/ }),
-/* 27 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1343,7 +1307,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Role);
 
 /***/ }),
-/* 28 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1470,7 +1434,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Specialization);
 
 /***/ }),
-/* 29 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1576,7 +1540,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(StepBar);
 
 /***/ }),
-/* 30 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1636,7 +1600,7 @@ var ROLES = exports.ROLES = {
 };
 
 /***/ }),
-/* 31 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1661,127 +1625,7 @@ var Footer = _styledComponents2.default.div(_templateObject);
 exports.default = Footer;
 
 /***/ }),
-/* 32 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var account = function account() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-  var action = arguments[1];
-
-  switch (action.type) {
-    default:
-      return state;
-  }
-};
-
-exports.default = account;
-
-/***/ }),
-/* 33 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var SET_STEP = 'SET_STEP';
-var SET_ROLE = 'SET_ROLE';
-var SET_CHARACTER = 'SET_CHARACTER';
-var SET_SPECIALIZATION = 'SET_SPECIALIZATION';
-var SET_ALTERNATIVE_SPECIALIZATION = 'SET_ALTERNATIVE_SPECIALIZATION';
-
-var apply = function apply() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-  var action = arguments[1];
-
-  switch (action.type) {
-    case SET_STEP:
-      return _extends({}, state, { step: action.step });
-    case SET_ROLE:
-      return _extends({}, state, { step: ++state.step, maxStep: 1, answers: _extends({}, state.anwsers, { role: action.role, character: null, specialization: null, alternative_specialization: null }) });
-    case SET_CHARACTER:
-      return _extends({}, state, { step: ++state.step, maxStep: 2, answers: _extends({}, state.answers, { character: action.character, specialization: null, alternative_specialization: null }) });
-    case SET_SPECIALIZATION:
-      return _extends({}, state, { step: ++state.step, maxStep: 3, answers: _extends({}, state.answers, { specialization: action.specialization, alternative_specialization: null }) });
-    case SET_ALTERNATIVE_SPECIALIZATION:
-      return _extends({}, state, { step: ++state.step, maxStep: 4, answers: _extends({}, state.answers, { alternative_specialization: action.alternative_specialization }) });
-    default:
-      return state;
-  }
-};
-
-exports.default = apply;
-
-/***/ }),
-/* 34 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var characters = function characters() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-  var action = arguments[1];
-
-  switch (action.type) {
-    default:
-      return state;
-  }
-};
-
-exports.default = characters;
-
-/***/ }),
-/* 35 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _redux = __webpack_require__(10);
-
-var _account = __webpack_require__(32);
-
-var _account2 = _interopRequireDefault(_account);
-
-var _apply = __webpack_require__(33);
-
-var _apply2 = _interopRequireDefault(_apply);
-
-var _characters = __webpack_require__(34);
-
-var _characters2 = _interopRequireDefault(_characters);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var todoApp = (0, _redux.combineReducers)({
-  account: _account2.default,
-  characters: _characters2.default,
-  apply: _apply2.default
-});
-
-exports.default = todoApp;
-
-/***/ }),
-/* 36 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1802,7 +1646,7 @@ function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defi
 (0, _styledComponents.injectGlobal)(_templateObject, _colors2.default.darkGrey, _colors2.default.green);
 
 /***/ }),
-/* 37 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1819,15 +1663,15 @@ var _colors = __webpack_require__(9);
 
 var _colors2 = _interopRequireDefault(_colors);
 
-var _fonts = __webpack_require__(39);
+var _fonts = __webpack_require__(34);
 
 var _fonts2 = _interopRequireDefault(_fonts);
 
-var _spacings = __webpack_require__(40);
+var _spacings = __webpack_require__(35);
 
 var _spacings2 = _interopRequireDefault(_spacings);
 
-var _breakpoints = __webpack_require__(38);
+var _breakpoints = __webpack_require__(33);
 
 var _breakpoints2 = _interopRequireDefault(_breakpoints);
 
@@ -1836,7 +1680,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var theme = exports.theme = _extends({}, _colors2.default, _fonts2.default, _spacings2.default, _breakpoints2.default);
 
 /***/ }),
-/* 38 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1859,7 +1703,7 @@ var breakpoint = {
 exports.default = breakpoint;
 
 /***/ }),
-/* 39 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1877,7 +1721,7 @@ var font = {
 exports.default = font;
 
 /***/ }),
-/* 40 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1897,12 +1741,6 @@ var spacing = {
 };
 
 exports.default = spacing;
-
-/***/ }),
-/* 41 */
-/***/ (function(module, exports) {
-
-module.exports = require("react-dom");
 
 /***/ })
 /******/ ]);
