@@ -5213,7 +5213,7 @@ function AlternativeSpecialization(_ref4) {
     var renderSpecializations = alternativeSpecializations.map(function (spec, index) {
         return _react2.default.createElement(
             Option,
-            { image: (0, _helpers.getClassName)(charClass) + '/' + spec.toLowerCase(), onClick: function onClick() {
+            { image: (0, _helpers.getClassName)(charClass).replace(' ', '_') + '/' + spec.toLowerCase().replace(' ', '_'), onClick: function onClick() {
                     return _onClick(spec);
                 }, key: index },
             _react2.default.createElement(Gradient, null),
@@ -5834,7 +5834,7 @@ function Specialization(_ref3) {
     var renderSpecializations = specializations.map(function (spec, index) {
         return _react2.default.createElement(
             Option,
-            { image: (0, _helpers.getClassName)(charClass) + '/' + spec.toLowerCase(), onClick: function onClick() {
+            { image: (0, _helpers.getClassName)(charClass).replace(' ', '_') + '/' + spec.toLowerCase().replace(' ', '_'), onClick: function onClick() {
                     return _onClick(spec);
                 }, key: index },
             _react2.default.createElement(Gradient, null),

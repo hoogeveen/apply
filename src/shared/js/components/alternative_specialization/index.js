@@ -62,7 +62,7 @@ const Button = styled.button`
 function AlternativeSpecialization({ alternativeSpecializations, charClass, onClick }) {
     const renderSpecializations = alternativeSpecializations.map((spec, index) => {
         return (
-            <Option image={`${getClassName(charClass)}/${spec.toLowerCase()}`} onClick={() => onClick(spec)} key={index}>
+            <Option image={`${getClassName(charClass).replace(' ', '_')}/${spec.toLowerCase().replace(' ', '_')}`} onClick={() => onClick(spec)} key={index}>
                 <Gradient />
                 <OptionTitle>{spec}</OptionTitle>
             </Option>
