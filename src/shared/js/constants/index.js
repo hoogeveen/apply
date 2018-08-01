@@ -31,15 +31,25 @@ export const COLORS = {
 
 export const RACES = {
     HUMAN: 1,
-    DWARF: 2,
+    ORC: 2,
+    DWARF: 3,
     NIGHT_ELF: 4,
+    UNDEAD: 5,
     TAUREN: 6,
     GNOME: 7,
+    TROLL: 8,
     GOBLIN: 9,
+    BLOOD_ELF: 10,
+    DRAENEI: 11,
+    PANDAREN: 24,
     PANDAREN: 25,
     PANDAREN: 26,
-    BLOOD_ELF: 10,
-    DRAENEI: 11
+    NIGHTBORNE: 27,
+    HIGHMOUNTAIN_TAUREN: 28,
+    VOID_ELF: 29,
+    LIGHTFORGER_DRAENEI: 30,
+    DARK_IRON_DWARF: 34,
+    MAGHAR_ORC: 36
 }
 
 export const ROLES = {

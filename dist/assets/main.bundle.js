@@ -11050,13 +11050,18 @@ var COLORS = exports.COLORS = {
 
 var RACES = exports.RACES = (_RACES = {
     HUMAN: 1,
-    DWARF: 2,
+    ORC: 2,
+    DWARF: 3,
     NIGHT_ELF: 4,
+    UNDEAD: 5,
     TAUREN: 6,
     GNOME: 7,
+    TROLL: 8,
     GOBLIN: 9,
-    PANDAREN: 25
-}, _defineProperty(_RACES, 'PANDAREN', 26), _defineProperty(_RACES, 'BLOOD_ELF', 10), _defineProperty(_RACES, 'DRAENEI', 11), _RACES);
+    BLOOD_ELF: 10,
+    DRAENEI: 11,
+    PANDAREN: 24
+}, _defineProperty(_RACES, 'PANDAREN', 25), _defineProperty(_RACES, 'PANDAREN', 26), _defineProperty(_RACES, 'NIGHTBORNE', 27), _defineProperty(_RACES, 'HIGHMOUNTAIN_TAUREN', 28), _defineProperty(_RACES, 'VOID_ELF', 29), _defineProperty(_RACES, 'LIGHTFORGER_DRAENEI', 30), _defineProperty(_RACES, 'DARK_IRON_DWARF', 34), _defineProperty(_RACES, 'MAGHAR_ORC', 36), _RACES);
 
 var ROLES = exports.ROLES = {
     TANK: 'TANK',
