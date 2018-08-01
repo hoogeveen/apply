@@ -52,7 +52,7 @@ app.get('/auth/bnet/callback',
 
 
 app.get('*', async (req, res) => {
-
+    console.log(req.user)
 		const sheet = new ServerStyleSheet();
 
 		const html = ReactDOM.renderToString(sheet.collectStyles(<App />))

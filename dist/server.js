@@ -620,7 +620,7 @@ app.get('/auth/bnet/callback', _passport2.default.authenticate('bnet', { failure
 });
 
 app.get('*', async function (req, res) {
-
+  console.log(req.user);
   var sheet = new _styledComponents.ServerStyleSheet();
 
   var html = _server2.default.renderToString(sheet.collectStyles(_react2.default.createElement(_shared2.default, null)));
