@@ -595,6 +595,14 @@ var BnetStrategy = __webpack_require__(15).Strategy;
 var BNET_ID = 'gy436v5phwuxt5quu8x7n99avgsebghd';
 var BNET_SECRET = 'DV983WRzn45DWyTz2zkfTCU2Xv7uKhUh';
 
+_passport2.default.serializeUser(function (user, done) {
+  done(null, user);
+});
+
+_passport2.default.deserializeUser(function (user, done) {
+  done(null, user);
+});
+
 // Use the BnetStrategy within Passport.
 _passport2.default.use(new BnetStrategy({
   clientID: BNET_ID,

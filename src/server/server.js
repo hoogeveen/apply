@@ -22,6 +22,14 @@ var BnetStrategy = require('passport-bnet').Strategy;
 var BNET_ID = 'gy436v5phwuxt5quu8x7n99avgsebghd'
 var BNET_SECRET = 'DV983WRzn45DWyTz2zkfTCU2Xv7uKhUh'
 
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function(user, done) {
+  done(null, user);
+});
+
 // Use the BnetStrategy within Passport.
 passport.use(new BnetStrategy({
     clientID: BNET_ID,
