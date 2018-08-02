@@ -139,7 +139,9 @@ function renderFullPage(html, preloadedState, helmet, styles) {
     <!doctype html>
     <html>
       <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="icon" href="/dist/favicon.ico" type="image/ico" />
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
         ${helmet.title.toString()}
         ${helmet.meta.toString()}
 				${helmet.link.toString()}

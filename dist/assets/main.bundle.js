@@ -7173,7 +7173,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var SpecializationContainer = exports.SpecializationContainer = _styledComponents2.default.div.withConfig({
     displayName: 'specialization__SpecializationContainer',
     componentId: 's1jgkwd3-0'
-})(['display:flex;justify-content:center;']);
+})(['display:flex;flex-flow:row wrap;justify-content:center;']);
 
 var SpecializationItem = exports.SpecializationItem = _styledComponents2.default.div.withConfig({
     displayName: 'specialization__SpecializationItem',
@@ -10168,8 +10168,14 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var Option = _styledComponents2.default.div.withConfig({
     displayName: 'alternative_specialization__Option',
     componentId: 'jsyuuj-0'
-})(['color:', ';width:320px;height:240px;display:inline-block;background-image:url(\'/dist/assets/images/thumbnails/specializations/', '@2x.png\');background-size:cover;opacity:', ';transition:opacity ease-in-out 0.3s;position:relative;&:hover{opacity:1;}'], function (props) {
+})(['color:', ';width:100%;@media (min-width:', '){width:50%;}@media (min-width:', '){width:25%;}height:240px;display:inline-block;background-image:url(\'/dist/assets/images/thumbnails/specializations/', '@2x.png\');background-size:cover;opacity:', ';transition:opacity ease-in-out 0.3s;position:relative;&:hover{opacity:1;}'], function (props) {
     return props.active ? 'red' : 'black';
+}, function (_ref) {
+    var theme = _ref.theme;
+    return theme.bpTablet;
+}, function (_ref2) {
+    var theme = _ref2.theme;
+    return theme.bpDesktop;
 }, function (props) {
     return props.image;
 }, function (props) {
@@ -10179,11 +10185,11 @@ var Option = _styledComponents2.default.div.withConfig({
 var OptionTitle = _styledComponents2.default.span.withConfig({
     displayName: 'alternative_specialization__OptionTitle',
     componentId: 'jsyuuj-1'
-})(['color:', ';font-family:', ';font-size:2em;position:absolute;bottom:20px;left:20px;text-shadow:2px 2px 2px rgba(0,0,0,0.5);'], function (_ref) {
-    var theme = _ref.theme;
+})(['color:', ';font-family:', ';font-size:2em;position:absolute;bottom:20px;left:20px;text-shadow:2px 2px 2px rgba(0,0,0,0.5);'], function (_ref3) {
+    var theme = _ref3.theme;
     return theme.textColor;
-}, function (_ref2) {
-    var theme = _ref2.theme;
+}, function (_ref4) {
+    var theme = _ref4.theme;
     return theme.fontBold;
 });
 
@@ -10195,15 +10201,15 @@ var Gradient = _styledComponents2.default.div.withConfig({
 var Button = _styledComponents2.default.button.withConfig({
     displayName: 'alternative_specialization__Button',
     componentId: 'jsyuuj-3'
-})(['background:transparent;border:3px solid #494949;padding:10px;border-radius:15px;font-family:', ';color:#494949;font-size:16px;&:hover{color:#DDA024;border-color:#DDA024;}'], function (_ref3) {
-    var theme = _ref3.theme;
+})(['background:transparent;border:3px solid #494949;padding:10px;border-radius:15px;font-family:', ';color:#494949;font-size:16px;&:hover{color:#DDA024;border-color:#DDA024;}'], function (_ref5) {
+    var theme = _ref5.theme;
     return theme.fontBold;
 });
 
-function AlternativeSpecialization(_ref4) {
-    var alternativeSpecializations = _ref4.alternativeSpecializations,
-        charClass = _ref4.charClass,
-        _onClick = _ref4.onClick;
+function AlternativeSpecialization(_ref6) {
+    var alternativeSpecializations = _ref6.alternativeSpecializations,
+        charClass = _ref6.charClass,
+        _onClick = _ref6.onClick;
 
     var renderSpecializations = alternativeSpecializations.map(function (spec, index) {
         return _react2.default.createElement(
@@ -10403,12 +10409,18 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var CharactersContainer = _styledComponents2.default.div.withConfig({
     displayName: 'character__CharactersContainer',
     componentId: 's1174jsy-0'
-})(['display:flex;flex-wrap:wrap;']);
+})(['display:flex;flex-flow:row wrap;']);
 
 var Character = _styledComponents2.default.div.withConfig({
     displayName: 'character__Character',
     componentId: 's1174jsy-1'
-})(['flex:initial;width:320px;height:240px;display:inline-block;background-image:url(\'http://render-eu.worldofwarcraft.com/character/', '\');background-size:cover;opacity:', ';transition:opacity ease-in-out 0.3s;position:relative;&:hover{opacity:1;}'], function (props) {
+})(['flex:initial;width:100%;@media (min-width:', '){width:50%;}@media (min-width:', '){width:25%;}height:240px;display:inline-block;background-image:url(\'http://render-eu.worldofwarcraft.com/character/', '\');background-size:cover;opacity:', ';transition:opacity ease-in-out 0.3s;position:relative;&:hover{opacity:1;}'], function (_ref) {
+    var theme = _ref.theme;
+    return theme.bpTablet;
+}, function (_ref2) {
+    var theme = _ref2.theme;
+    return theme.bpDesktop;
+}, function (props) {
     return props.image;
 }, function (props) {
     return props.active ? 1 : 0.5;
@@ -10417,11 +10429,11 @@ var Character = _styledComponents2.default.div.withConfig({
 var OptionTitle = _styledComponents2.default.span.withConfig({
     displayName: 'character__OptionTitle',
     componentId: 's1174jsy-2'
-})(['color:', ';font-family:', ';font-size:2em;position:absolute;bottom:35px;left:20px;text-shadow:2px 2px 2px rgba(0,0,0,0.5);'], function (_ref) {
-    var theme = _ref.theme;
+})(['color:', ';font-family:', ';font-size:2em;position:absolute;bottom:35px;left:20px;text-shadow:2px 2px 2px rgba(0,0,0,0.5);'], function (_ref3) {
+    var theme = _ref3.theme;
     return theme.textColor;
-}, function (_ref2) {
-    var theme = _ref2.theme;
+}, function (_ref4) {
+    var theme = _ref4.theme;
     return theme.fontBold;
 });
 
@@ -10434,8 +10446,8 @@ var OptionSubtitle = _styledComponents2.default.span.attrs({
     componentId: 's1174jsy-3'
 })(['color:', ';font-family:', ';font-size:0.75em;position:absolute;bottom:20px;left:20px;text-transform:capitalize;text-shadow:2px 2px 2px rgba(0,0,0,0.5);'], function (props) {
     return props.classColor;
-}, function (_ref3) {
-    var theme = _ref3.theme;
+}, function (_ref5) {
+    var theme = _ref5.theme;
     return theme.fontBold;
 });
 
@@ -10449,10 +10461,10 @@ var Gradient = _styledComponents2.default.div.withConfig({
     componentId: 's1174jsy-5'
 })(['background-image:url(\'/static/gradient@2x.png\');background-size:fit;position:absolute;bottom:0;left:0;right:0;height:143px;']);
 
-function Characters(_ref4) {
-    var characters = _ref4.characters,
-        selectedCharacter = _ref4.selectedCharacter,
-        _onClick = _ref4.onClick;
+function Characters(_ref6) {
+    var characters = _ref6.characters,
+        selectedCharacter = _ref6.selectedCharacter,
+        _onClick = _ref6.onClick;
 
     console.log(characters);
     var renderCharacters = characters.map(function (character, index) {
@@ -10668,13 +10680,19 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var OptionsContainer = _styledComponents2.default.div.withConfig({
     displayName: 'role__OptionsContainer',
     componentId: 's1ec5z2d-0'
-})(['display:flex;']);
+})(['display:flex;flex-flow:row wrap;']);
 
 var Option = _styledComponents2.default.div.withConfig({
     displayName: 'role__Option',
     componentId: 's1ec5z2d-1'
-})(['color:', ';width:320px;height:240px;display:inline-block;background-image:url(\'/dist/assets/images/thumbnails/roles/', '@2x.png\');background-size:cover;opacity:', ';transition:opacity ease-in-out 0.3s;position:relative;&:hover{opacity:1;}'], function (props) {
+})(['color:', ';width:100%;@media (min-width:', '){width:50%;}@media (min-width:', '){width:25%;}height:240px;display:inline-block;background-image:url(\'/dist/assets/images/thumbnails/roles/', '@2x.png\');background-size:cover;opacity:', ';transition:opacity ease-in-out 0.3s;position:relative;&:hover{opacity:1;}'], function (props) {
     return props.active ? 'red' : 'black';
+}, function (_ref) {
+    var theme = _ref.theme;
+    return theme.bpTablet;
+}, function (_ref2) {
+    var theme = _ref2.theme;
+    return theme.bpDesktop;
 }, function (props) {
     return props.image;
 }, function (props) {
@@ -10684,11 +10702,11 @@ var Option = _styledComponents2.default.div.withConfig({
 var OptionTitle = _styledComponents2.default.span.withConfig({
     displayName: 'role__OptionTitle',
     componentId: 's1ec5z2d-2'
-})(['color:', ';font-family:', ';font-size:2em;position:absolute;bottom:20px;left:20px;text-shadow:2px 2px 2px rgba(0,0,0,0.5);'], function (_ref) {
-    var theme = _ref.theme;
+})(['color:', ';font-family:', ';font-size:2em;position:absolute;bottom:20px;left:20px;text-shadow:2px 2px 2px rgba(0,0,0,0.5);'], function (_ref3) {
+    var theme = _ref3.theme;
     return theme.textColor;
-}, function (_ref2) {
-    var theme = _ref2.theme;
+}, function (_ref4) {
+    var theme = _ref4.theme;
     return theme.fontBold;
 });
 
@@ -10697,10 +10715,10 @@ var Gradient = _styledComponents2.default.div.withConfig({
     componentId: 's1ec5z2d-3'
 })(['background-image:url(\'/static/gradient@2x.png\');background-size:fit;position:absolute;bottom:0;left:0;right:0;height:143px;']);
 
-function Role(_ref3) {
-    var _onClick = _ref3.onClick,
-        availableRoles = _ref3.availableRoles,
-        selectedRole = _ref3.selectedRole;
+function Role(_ref5) {
+    var _onClick = _ref5.onClick,
+        availableRoles = _ref5.availableRoles,
+        selectedRole = _ref5.selectedRole;
 
     var options = availableRoles.map(function (role, index) {
         return _react2.default.createElement(
@@ -10805,8 +10823,14 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var Option = _styledComponents2.default.div.withConfig({
     displayName: 'specialization__Option',
     componentId: 'yvarmz-0'
-})(['color:', ';width:320px;height:240px;display:inline-block;background-image:url(\'/dist/assets/images/thumbnails/specializations/', '@2x.png\');background-size:cover;opacity:', ';transition:opacity ease-in-out 0.3s;position:relative;&:hover{opacity:1;}'], function (props) {
+})(['color:', ';width:100%;@media (min-width:', '){width:50%;}@media (min-width:', '){width:25%;}height:240px;display:inline-block;background-image:url(\'/dist/assets/images/thumbnails/specializations/', '@2x.png\');background-size:cover;opacity:', ';transition:opacity ease-in-out 0.3s;position:relative;&:hover{opacity:1;}'], function (props) {
     return props.active ? 'red' : 'black';
+}, function (_ref) {
+    var theme = _ref.theme;
+    return theme.bpTablet;
+}, function (_ref2) {
+    var theme = _ref2.theme;
+    return theme.bpDesktop;
 }, function (props) {
     return props.image;
 }, function (props) {
@@ -10816,11 +10840,11 @@ var Option = _styledComponents2.default.div.withConfig({
 var OptionTitle = _styledComponents2.default.span.withConfig({
     displayName: 'specialization__OptionTitle',
     componentId: 'yvarmz-1'
-})(['color:', ';font-family:', ';font-size:2em;position:absolute;bottom:20px;left:20px;text-shadow:2px 2px 2px rgba(0,0,0,0.5);'], function (_ref) {
-    var theme = _ref.theme;
+})(['color:', ';font-family:', ';font-size:2em;position:absolute;bottom:20px;left:20px;text-shadow:2px 2px 2px rgba(0,0,0,0.5);'], function (_ref3) {
+    var theme = _ref3.theme;
     return theme.textColor;
-}, function (_ref2) {
-    var theme = _ref2.theme;
+}, function (_ref4) {
+    var theme = _ref4.theme;
     return theme.fontBold;
 });
 
@@ -10829,10 +10853,10 @@ var Gradient = _styledComponents2.default.div.withConfig({
     componentId: 'yvarmz-2'
 })(['background-image:url(\'/static/gradient@2x.png\');background-size:fit;position:absolute;bottom:0;left:0;right:0;height:143px;']);
 
-function Specialization(_ref3) {
-    var charClass = _ref3.charClass,
-        role = _ref3.role,
-        _onClick = _ref3.onClick;
+function Specialization(_ref5) {
+    var charClass = _ref5.charClass,
+        role = _ref5.role,
+        _onClick = _ref5.onClick;
 
     console.log(role);
     console.log(charClass);

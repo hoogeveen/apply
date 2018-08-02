@@ -393,7 +393,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.SpecializationItem = exports.SpecializationContainer = undefined;
 
-var _templateObject = _taggedTemplateLiteral(['\n    display: flex;\n    justify-content: center;\n'], ['\n    display: flex;\n    justify-content: center;\n']),
+var _templateObject = _taggedTemplateLiteral(['\n    display: flex;\n    flex-flow: row wrap;\n    justify-content: center;\n'], ['\n    display: flex;\n    flex-flow: row wrap;\n    justify-content: center;\n']),
     _templateObject2 = _taggedTemplateLiteral(['\n\n'], ['\n\n']);
 
 var _styledComponents = __webpack_require__(0);
@@ -773,7 +773,7 @@ app.listen(port, function () {
 });
 
 function renderFullPage(html, preloadedState, helmet, styles) {
-  return '\n    <!doctype html>\n    <html>\n      <head>\n        <link rel="icon" href="/dist/favicon.ico" type="image/ico" />\n        ' + helmet.title.toString() + '\n        ' + helmet.meta.toString() + '\n\t\t\t\t' + helmet.link.toString() + '\n\t\t\t\t' + styles + '\n      </head>\n      <body>\n        <div id="root">' + html + '</div>\n        <script>\n          // WARNING: See the following for security issues around embedding JSON in HTML:\n          // http://redux.js.org/docs/recipes/ServerRendering.html#security-considerations\n          window.__PRELOADED_STATE__ = ' + JSON.stringify(preloadedState).replace(/</g, '\\u003c') + '\n        </script>\n        <script src="/dist/assets/main.bundle.js"></script>\n      </body>\n    </html>\n    ';
+  return '\n    <!doctype html>\n    <html>\n      <head>\n        <meta name="viewport" content="width=device-width, initial-scale=1">\n        <link rel="icon" href="/dist/favicon.ico" type="image/ico" />\n        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">\n        ' + helmet.title.toString() + '\n        ' + helmet.meta.toString() + '\n\t\t\t\t' + helmet.link.toString() + '\n\t\t\t\t' + styles + '\n      </head>\n      <body>\n        <div id="root">' + html + '</div>\n        <script>\n          // WARNING: See the following for security issues around embedding JSON in HTML:\n          // http://redux.js.org/docs/recipes/ServerRendering.html#security-considerations\n          window.__PRELOADED_STATE__ = ' + JSON.stringify(preloadedState).replace(/</g, '\\u003c') + '\n        </script>\n        <script src="/dist/assets/main.bundle.js"></script>\n      </body>\n    </html>\n    ';
 }
 
 /***/ }),
@@ -787,7 +787,7 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _templateObject = _taggedTemplateLiteral(['\n    color: ', ';\n    width: 320px;\n    height: 240px;\n    display: inline-block;\n    background-image: url(\'/dist/assets/images/thumbnails/specializations/', '@2x.png\');\n    background-size: cover;\n\n    opacity: ', ';\n    transition: opacity ease-in-out 0.3s;\n    position: relative;\n    &:hover {\n        opacity: 1;\n    }\n'], ['\n    color: ', ';\n    width: 320px;\n    height: 240px;\n    display: inline-block;\n    background-image: url(\'/dist/assets/images/thumbnails/specializations/', '@2x.png\');\n    background-size: cover;\n\n    opacity: ', ';\n    transition: opacity ease-in-out 0.3s;\n    position: relative;\n    &:hover {\n        opacity: 1;\n    }\n']),
+var _templateObject = _taggedTemplateLiteral(['\n    color: ', ';\n    width: 100%;\n    @media (min-width: ', ') {\n        width: 50%;\n    }\n    @media (min-width: ', ') {\n        width: 25%;\n    }\n    height: 240px;\n    display: inline-block;\n    background-image: url(\'/dist/assets/images/thumbnails/specializations/', '@2x.png\');\n    background-size: cover;\n\n    opacity: ', ';\n    transition: opacity ease-in-out 0.3s;\n    position: relative;\n    &:hover {\n        opacity: 1;\n    }\n'], ['\n    color: ', ';\n    width: 100%;\n    @media (min-width: ', ') {\n        width: 50%;\n    }\n    @media (min-width: ', ') {\n        width: 25%;\n    }\n    height: 240px;\n    display: inline-block;\n    background-image: url(\'/dist/assets/images/thumbnails/specializations/', '@2x.png\');\n    background-size: cover;\n\n    opacity: ', ';\n    transition: opacity ease-in-out 0.3s;\n    position: relative;\n    &:hover {\n        opacity: 1;\n    }\n']),
     _templateObject2 = _taggedTemplateLiteral(['\n    color: ', ';\n    font-family: ', ';\n    font-size: 2em;\n    position: absolute;\n    bottom: 20px;\n    left: 20px;\n    text-shadow: 2px 2px 2px rgba(0,0,0,0.5);\n'], ['\n    color: ', ';\n    font-family: ', ';\n    font-size: 2em;\n    position: absolute;\n    bottom: 20px;\n    left: 20px;\n    text-shadow: 2px 2px 2px rgba(0,0,0,0.5);\n']),
     _templateObject3 = _taggedTemplateLiteral(['\n    background-image: url(\'/static/gradient@2x.png\');\n    background-size: fit;\n    position: absolute;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    height: 143px;\n'], ['\n    background-image: url(\'/static/gradient@2x.png\');\n    background-size: fit;\n    position: absolute;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    height: 143px;\n']),
     _templateObject4 = _taggedTemplateLiteral(['\n    background: transparent;\n    border: 3px solid #494949;\n    padding: 10px;\n    border-radius: 15px;\n    font-family: ', ';\n    color: #494949;\n    font-size: 16px;\n    &:hover {\n        color: #DDA024;\n        border-color: #DDA024;\n    }\n'], ['\n    background: transparent;\n    border: 3px solid #494949;\n    padding: 10px;\n    border-radius: 15px;\n    font-family: ', ';\n    color: #494949;\n    font-size: 16px;\n    &:hover {\n        color: #DDA024;\n        border-color: #DDA024;\n    }\n']);
@@ -830,31 +830,37 @@ function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defi
 
 var Option = _styledComponents2.default.div(_templateObject, function (props) {
     return props.active ? 'red' : 'black';
+}, function (_ref) {
+    var theme = _ref.theme;
+    return theme.bpTablet;
+}, function (_ref2) {
+    var theme = _ref2.theme;
+    return theme.bpDesktop;
 }, function (props) {
     return props.image;
 }, function (props) {
     return props.active ? 1 : 0.5;
 });
 
-var OptionTitle = _styledComponents2.default.span(_templateObject2, function (_ref) {
-    var theme = _ref.theme;
+var OptionTitle = _styledComponents2.default.span(_templateObject2, function (_ref3) {
+    var theme = _ref3.theme;
     return theme.textColor;
-}, function (_ref2) {
-    var theme = _ref2.theme;
+}, function (_ref4) {
+    var theme = _ref4.theme;
     return theme.fontBold;
 });
 
 var Gradient = _styledComponents2.default.div(_templateObject3);
 
-var Button = _styledComponents2.default.button(_templateObject4, function (_ref3) {
-    var theme = _ref3.theme;
+var Button = _styledComponents2.default.button(_templateObject4, function (_ref5) {
+    var theme = _ref5.theme;
     return theme.fontBold;
 });
 
-function AlternativeSpecialization(_ref4) {
-    var alternativeSpecializations = _ref4.alternativeSpecializations,
-        charClass = _ref4.charClass,
-        _onClick = _ref4.onClick;
+function AlternativeSpecialization(_ref6) {
+    var alternativeSpecializations = _ref6.alternativeSpecializations,
+        charClass = _ref6.charClass,
+        _onClick = _ref6.onClick;
 
     var renderSpecializations = alternativeSpecializations.map(function (spec, index) {
         return _react2.default.createElement(
@@ -1024,8 +1030,8 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _templateObject = _taggedTemplateLiteral(['\n    display: flex;\n    flex-wrap: wrap;\n'], ['\n    display: flex;\n    flex-wrap: wrap;\n']),
-    _templateObject2 = _taggedTemplateLiteral(['\n    flex: initial;\n    width: 320px;\n    height: 240px;\n    display: inline-block;\n    background-image: url(\'http://render-eu.worldofwarcraft.com/character/', '\');\n    background-size: cover;\n    opacity: ', ';\n    transition: opacity ease-in-out 0.3s;\n    position: relative;\n    &:hover {\n        opacity: 1;\n    }\n'], ['\n    flex: initial;\n    width: 320px;\n    height: 240px;\n    display: inline-block;\n    background-image: url(\'http://render-eu.worldofwarcraft.com/character/', '\');\n    background-size: cover;\n    opacity: ', ';\n    transition: opacity ease-in-out 0.3s;\n    position: relative;\n    &:hover {\n        opacity: 1;\n    }\n']),
+var _templateObject = _taggedTemplateLiteral(['\n    display: flex;\n    flex-flow: row wrap;\n'], ['\n    display: flex;\n    flex-flow: row wrap;\n']),
+    _templateObject2 = _taggedTemplateLiteral(['\n    flex: initial;\n    width: 100%;\n    @media (min-width: ', ') {\n        width: 50%;\n    }\n    @media (min-width: ', ') {\n        width: 25%;\n    }\n    height: 240px;\n    display: inline-block;\n    background-image: url(\'http://render-eu.worldofwarcraft.com/character/', '\');\n    background-size: cover;\n    opacity: ', ';\n    transition: opacity ease-in-out 0.3s;\n    position: relative;\n    &:hover {\n        opacity: 1;\n    }\n'], ['\n    flex: initial;\n    width: 100%;\n    @media (min-width: ', ') {\n        width: 50%;\n    }\n    @media (min-width: ', ') {\n        width: 25%;\n    }\n    height: 240px;\n    display: inline-block;\n    background-image: url(\'http://render-eu.worldofwarcraft.com/character/', '\');\n    background-size: cover;\n    opacity: ', ';\n    transition: opacity ease-in-out 0.3s;\n    position: relative;\n    &:hover {\n        opacity: 1;\n    }\n']),
     _templateObject3 = _taggedTemplateLiteral(['\n    color: ', ';\n    font-family: ', ';\n    font-size: 2em;\n    position: absolute;\n    bottom: 35px;\n    left: 20px;\n    text-shadow: 2px 2px 2px rgba(0,0,0,0.5);\n'], ['\n    color: ', ';\n    font-family: ', ';\n    font-size: 2em;\n    position: absolute;\n    bottom: 35px;\n    left: 20px;\n    text-shadow: 2px 2px 2px rgba(0,0,0,0.5);\n']),
     _templateObject4 = _taggedTemplateLiteral(['\n    color: ', ';\n    font-family: ', ';\n    font-size: 0.75em;\n    position: absolute;\n    bottom: 20px;\n    left: 20px;\n    text-transform: capitalize;\n    text-shadow: 2px 2px 2px rgba(0,0,0,0.5);\n'], ['\n    color: ', ';\n    font-family: ', ';\n    font-size: 0.75em;\n    position: absolute;\n    bottom: 20px;\n    left: 20px;\n    text-transform: capitalize;\n    text-shadow: 2px 2px 2px rgba(0,0,0,0.5);\n']),
     _templateObject5 = _taggedTemplateLiteral(['\n    font-size: 0.9em;\n    margin-left: 10px;\n    color: #ccc;\n'], ['\n    font-size: 0.9em;\n    margin-left: 10px;\n    color: #ccc;\n']),
@@ -1063,17 +1069,23 @@ function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defi
 
 var CharactersContainer = _styledComponents2.default.div(_templateObject);
 
-var Character = _styledComponents2.default.div(_templateObject2, function (props) {
+var Character = _styledComponents2.default.div(_templateObject2, function (_ref) {
+    var theme = _ref.theme;
+    return theme.bpTablet;
+}, function (_ref2) {
+    var theme = _ref2.theme;
+    return theme.bpDesktop;
+}, function (props) {
     return props.image;
 }, function (props) {
     return props.active ? 1 : 0.5;
 });
 
-var OptionTitle = _styledComponents2.default.span(_templateObject3, function (_ref) {
-    var theme = _ref.theme;
+var OptionTitle = _styledComponents2.default.span(_templateObject3, function (_ref3) {
+    var theme = _ref3.theme;
     return theme.textColor;
-}, function (_ref2) {
-    var theme = _ref2.theme;
+}, function (_ref4) {
+    var theme = _ref4.theme;
     return theme.fontBold;
 });
 
@@ -1083,8 +1095,8 @@ var OptionSubtitle = _styledComponents2.default.span.attrs({
     }
 })(_templateObject4, function (props) {
     return props.classColor;
-}, function (_ref3) {
-    var theme = _ref3.theme;
+}, function (_ref5) {
+    var theme = _ref5.theme;
     return theme.fontBold;
 });
 
@@ -1092,10 +1104,10 @@ var RealmName = _styledComponents2.default.span(_templateObject5);
 
 var Gradient = _styledComponents2.default.div(_templateObject6);
 
-function Characters(_ref4) {
-    var characters = _ref4.characters,
-        selectedCharacter = _ref4.selectedCharacter,
-        _onClick = _ref4.onClick;
+function Characters(_ref6) {
+    var characters = _ref6.characters,
+        selectedCharacter = _ref6.selectedCharacter,
+        _onClick = _ref6.onClick;
 
     console.log(characters);
     var renderCharacters = characters.map(function (character, index) {
@@ -1280,8 +1292,8 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _templateObject = _taggedTemplateLiteral(['\n    display: flex;\n'], ['\n    display: flex;\n']),
-    _templateObject2 = _taggedTemplateLiteral(['\n    color: ', ';\n    width: 320px;\n    height: 240px;\n    display: inline-block;\n    background-image: url(\'/dist/assets/images/thumbnails/roles/', '@2x.png\');\n    background-size: cover;\n\n    opacity: ', ';\n    transition: opacity ease-in-out 0.3s;\n    position: relative;\n    &:hover {\n        opacity: 1;\n    }\n'], ['\n    color: ', ';\n    width: 320px;\n    height: 240px;\n    display: inline-block;\n    background-image: url(\'/dist/assets/images/thumbnails/roles/', '@2x.png\');\n    background-size: cover;\n\n    opacity: ', ';\n    transition: opacity ease-in-out 0.3s;\n    position: relative;\n    &:hover {\n        opacity: 1;\n    }\n']),
+var _templateObject = _taggedTemplateLiteral(['\n    display: flex;\n    flex-flow: row wrap;\n'], ['\n    display: flex;\n    flex-flow: row wrap;\n']),
+    _templateObject2 = _taggedTemplateLiteral(['\n    color: ', ';\n    width: 100%;\n    @media (min-width: ', ') {\n        width: 50%;\n    }\n    @media (min-width: ', ') {\n        width: 25%;\n    }\n\n    height: 240px;\n    display: inline-block;\n    background-image: url(\'/dist/assets/images/thumbnails/roles/', '@2x.png\');\n    background-size: cover;\n\n    opacity: ', ';\n    transition: opacity ease-in-out 0.3s;\n    position: relative;\n    &:hover {\n        opacity: 1;\n    }\n'], ['\n    color: ', ';\n    width: 100%;\n    @media (min-width: ', ') {\n        width: 50%;\n    }\n    @media (min-width: ', ') {\n        width: 25%;\n    }\n\n    height: 240px;\n    display: inline-block;\n    background-image: url(\'/dist/assets/images/thumbnails/roles/', '@2x.png\');\n    background-size: cover;\n\n    opacity: ', ';\n    transition: opacity ease-in-out 0.3s;\n    position: relative;\n    &:hover {\n        opacity: 1;\n    }\n']),
     _templateObject3 = _taggedTemplateLiteral(['\n    color: ', ';\n    font-family: ', ';\n    font-size: 2em;\n    position: absolute;\n    bottom: 20px;\n    left: 20px;\n    text-shadow: 2px 2px 2px rgba(0,0,0,0.5);\n'], ['\n    color: ', ';\n    font-family: ', ';\n    font-size: 2em;\n    position: absolute;\n    bottom: 20px;\n    left: 20px;\n    text-shadow: 2px 2px 2px rgba(0,0,0,0.5);\n']),
     _templateObject4 = _taggedTemplateLiteral(['\n    background-image: url(\'/static/gradient@2x.png\');\n    background-size: fit;\n    position: absolute;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    height: 143px;\n'], ['\n    background-image: url(\'/static/gradient@2x.png\');\n    background-size: fit;\n    position: absolute;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    height: 143px;\n']);
 
@@ -1319,26 +1331,32 @@ var OptionsContainer = _styledComponents2.default.div(_templateObject);
 
 var Option = _styledComponents2.default.div(_templateObject2, function (props) {
     return props.active ? 'red' : 'black';
+}, function (_ref) {
+    var theme = _ref.theme;
+    return theme.bpTablet;
+}, function (_ref2) {
+    var theme = _ref2.theme;
+    return theme.bpDesktop;
 }, function (props) {
     return props.image;
 }, function (props) {
     return props.active ? 1 : 0.5;
 });
 
-var OptionTitle = _styledComponents2.default.span(_templateObject3, function (_ref) {
-    var theme = _ref.theme;
+var OptionTitle = _styledComponents2.default.span(_templateObject3, function (_ref3) {
+    var theme = _ref3.theme;
     return theme.textColor;
-}, function (_ref2) {
-    var theme = _ref2.theme;
+}, function (_ref4) {
+    var theme = _ref4.theme;
     return theme.fontBold;
 });
 
 var Gradient = _styledComponents2.default.div(_templateObject4);
 
-function Role(_ref3) {
-    var _onClick = _ref3.onClick,
-        availableRoles = _ref3.availableRoles,
-        selectedRole = _ref3.selectedRole;
+function Role(_ref5) {
+    var _onClick = _ref5.onClick,
+        availableRoles = _ref5.availableRoles,
+        selectedRole = _ref5.selectedRole;
 
     var options = availableRoles.map(function (role, index) {
         return _react2.default.createElement(
@@ -1410,7 +1428,7 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _templateObject = _taggedTemplateLiteral(['\n    color: ', ';\n    width: 320px;\n    height: 240px;\n    display: inline-block;\n    background-image: url(\'/dist/assets/images/thumbnails/specializations/', '@2x.png\');\n    background-size: cover;\n\n    opacity: ', ';\n    transition: opacity ease-in-out 0.3s;\n    position: relative;\n    &:hover {\n        opacity: 1;\n    }\n'], ['\n    color: ', ';\n    width: 320px;\n    height: 240px;\n    display: inline-block;\n    background-image: url(\'/dist/assets/images/thumbnails/specializations/', '@2x.png\');\n    background-size: cover;\n\n    opacity: ', ';\n    transition: opacity ease-in-out 0.3s;\n    position: relative;\n    &:hover {\n        opacity: 1;\n    }\n']),
+var _templateObject = _taggedTemplateLiteral(['\n    color: ', ';\n    width: 100%;\n    @media (min-width: ', ') {\n        width: 50%;\n    }\n    @media (min-width: ', ') {\n        width: 25%;\n    }\n    height: 240px;\n    display: inline-block;\n    background-image: url(\'/dist/assets/images/thumbnails/specializations/', '@2x.png\');\n    background-size: cover;\n\n    opacity: ', ';\n    transition: opacity ease-in-out 0.3s;\n    position: relative;\n    &:hover {\n        opacity: 1;\n    }\n'], ['\n    color: ', ';\n    width: 100%;\n    @media (min-width: ', ') {\n        width: 50%;\n    }\n    @media (min-width: ', ') {\n        width: 25%;\n    }\n    height: 240px;\n    display: inline-block;\n    background-image: url(\'/dist/assets/images/thumbnails/specializations/', '@2x.png\');\n    background-size: cover;\n\n    opacity: ', ';\n    transition: opacity ease-in-out 0.3s;\n    position: relative;\n    &:hover {\n        opacity: 1;\n    }\n']),
     _templateObject2 = _taggedTemplateLiteral(['\n    color: ', ';\n    font-family: ', ';\n    font-size: 2em;\n    position: absolute;\n    bottom: 20px;\n    left: 20px;\n    text-shadow: 2px 2px 2px rgba(0,0,0,0.5);\n'], ['\n    color: ', ';\n    font-family: ', ';\n    font-size: 2em;\n    position: absolute;\n    bottom: 20px;\n    left: 20px;\n    text-shadow: 2px 2px 2px rgba(0,0,0,0.5);\n']),
     _templateObject3 = _taggedTemplateLiteral(['\n    background-image: url(\'/static/gradient@2x.png\');\n    background-size: fit;\n    position: absolute;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    height: 143px;\n'], ['\n    background-image: url(\'/static/gradient@2x.png\');\n    background-size: fit;\n    position: absolute;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    height: 143px;\n']);
 
@@ -1448,26 +1466,32 @@ function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defi
 
 var Option = _styledComponents2.default.div(_templateObject, function (props) {
     return props.active ? 'red' : 'black';
+}, function (_ref) {
+    var theme = _ref.theme;
+    return theme.bpTablet;
+}, function (_ref2) {
+    var theme = _ref2.theme;
+    return theme.bpDesktop;
 }, function (props) {
     return props.image;
 }, function (props) {
     return props.active ? 1 : 0.5;
 });
 
-var OptionTitle = _styledComponents2.default.span(_templateObject2, function (_ref) {
-    var theme = _ref.theme;
+var OptionTitle = _styledComponents2.default.span(_templateObject2, function (_ref3) {
+    var theme = _ref3.theme;
     return theme.textColor;
-}, function (_ref2) {
-    var theme = _ref2.theme;
+}, function (_ref4) {
+    var theme = _ref4.theme;
     return theme.fontBold;
 });
 
 var Gradient = _styledComponents2.default.div(_templateObject3);
 
-function Specialization(_ref3) {
-    var charClass = _ref3.charClass,
-        role = _ref3.role,
-        _onClick = _ref3.onClick;
+function Specialization(_ref5) {
+    var charClass = _ref5.charClass,
+        role = _ref5.role,
+        _onClick = _ref5.onClick;
 
     console.log(role);
     console.log(charClass);

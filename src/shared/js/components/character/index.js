@@ -10,12 +10,18 @@ import Paragraph from '../../fragments/paragraph'
 
 const CharactersContainer = styled.div`
     display: flex;
-    flex-wrap: wrap;
+    flex-flow: row wrap;
 `
 
 const Character = styled.div`
     flex: initial;
-    width: 320px;
+    width: 100%;
+    @media (min-width: ${({ theme }) => theme.bpTablet}) {
+        width: 50%;
+    }
+    @media (min-width: ${({ theme }) => theme.bpDesktop}) {
+        width: 25%;
+    }
     height: 240px;
     display: inline-block;
     background-image: url('http://render-eu.worldofwarcraft.com/character/${props => props.image}');

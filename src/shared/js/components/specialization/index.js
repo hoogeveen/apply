@@ -12,7 +12,13 @@ import { SpecializationItem, SpecializationContainer } from '../../fragments/spe
 
 const Option = styled.div`
     color: ${props => props.active ? 'red' : 'black'};
-    width: 320px;
+    width: 100%;
+    @media (min-width: ${({ theme }) => theme.bpTablet}) {
+        width: 50%;
+    }
+    @media (min-width: ${({ theme }) => theme.bpDesktop}) {
+        width: 25%;
+    }
     height: 240px;
     display: inline-block;
     background-image: url('/dist/assets/images/thumbnails/specializations/${props => props.image}@2x.png');
