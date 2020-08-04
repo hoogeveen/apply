@@ -89,9 +89,8 @@ export function getAvailableClassesForRole(role) {
 }
 
 export function getCharactersForClasses(classes, characters) {
-    const dunnoWhy = classes.map(Number)
     return characters.filter((character) => {
-        return ~dunnoWhy.indexOf(character['class'])
+        return ~classes.map(Number).indexOf(character['class'])
     })
 }
 
